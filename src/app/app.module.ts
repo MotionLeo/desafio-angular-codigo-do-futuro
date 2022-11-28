@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
+import { MainRoutingModule } from './main/main-routing.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './pages/navegacao/header/header.component';
+import { ListaClienteComponent } from './pages/lista-cliente/lista-cliente.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    ListaClienteComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule
+    MainRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
