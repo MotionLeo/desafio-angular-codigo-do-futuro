@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
+<<<<<<< Updated upstream
 import { HeaderComponent } from './pages/navegacao/header/header.component';
+=======
+import { MainRoutingModule } from './main/main-routing.module';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -12,8 +15,8 @@ import { HeaderComponent } from './pages/navegacao/header/header.component';
   ],
   imports: [
     BrowserModule,
-    RouterModule
-  ],
+    MainRoutingModule
+],
   providers: [],
   bootstrap: [AppComponent]
 })
