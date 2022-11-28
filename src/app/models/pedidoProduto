@@ -1,4 +1,4 @@
-export interface Pedido_Produto {
+export interface PedidoProduto {
     id: Number
     pedido_id: Number
     produto_id: Number
