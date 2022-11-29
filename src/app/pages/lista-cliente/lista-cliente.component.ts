@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LogadoService } from 'src/app/servicos/logado.service';
 
 @Component({
   selector: 'app-lista-cliente',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaClienteComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    private logadoService: LogadoService,
+  ) { }
 
   ngOnInit(): void {
+  }
+  
+  novoCliente(){
+    this.router.navigateByUrl("/form-clientes")
   }
 
 }

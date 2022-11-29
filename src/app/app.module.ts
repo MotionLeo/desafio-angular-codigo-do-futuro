@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ListaClienteComponent } from './pages/lista-cliente/lista-cliente.component';
 import { FormClienteComponent } from './pages/form-cliente/form-cliente.component';
 import { HeaderComponent } from './pages/navegacao/header/header.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HeaderComponent } from './pages/navegacao/header/header.component';
   ],
   imports: [
     BrowserModule,
-    MainRoutingModule
+    MainRoutingModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
