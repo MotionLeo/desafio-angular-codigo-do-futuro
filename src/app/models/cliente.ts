@@ -1,7 +1,7 @@
 export interface Cliente {
     id: Number
     nome: String
-    telefone: Number
+    telefone: String
     email: String
     cpf: String
     cep: Number
