@@ -5,16 +5,20 @@ import { MainRoutingModule } from '../app/main/main-routing.module';
 import { AppComponent } from './app.component';
 import { ListaClienteComponent } from './pages/lista-cliente/lista-cliente.component';
 import { HeaderComponent } from './pages/navegacao/header/header.component';
+import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaClienteComponent,
-    HeaderComponent
+    HeaderComponent,
+    CarrinhoComponent
   ],
   imports: [
     BrowserModule,
-    MainRoutingModule
+    MainRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

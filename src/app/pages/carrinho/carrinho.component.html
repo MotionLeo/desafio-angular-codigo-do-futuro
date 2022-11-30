@@ -1,0 +1,19 @@
+<table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nome Produto</th>
+        <th scope="col">valor</th>
+        <th scope="col">Quantidade</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of items;let i = index">
+        <th scope="row" >{{item.id}}</th>
+        <td>{{nomes.at(i)}}</td>
+        <td>{{item.valor}}</td>
+        <td>{{item.quantidade}}</td>
+        <td><button id="proximo" type="submit" class="btn btn-primary" (click)="Excluir(i)">Excluir</button></td>
+    </tr>
+    </tbody>
+</table>
