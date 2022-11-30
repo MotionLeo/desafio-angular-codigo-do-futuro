@@ -32,4 +32,11 @@ export class ListaClienteComponent implements OnInit {
   private async listaDeClientes(){
     this.clientes = await this.clienteServico.lista();
   }
+
+  async excluir(cliente:Cliente){
+    if(confirm("Tem certeza que deseja excluir esse cliente?")){
+      await this.clienteServico.excluirPorId(cliente.id)
+      this.clientes = await this.clienteServico.lista()
+    }
+  }
 }

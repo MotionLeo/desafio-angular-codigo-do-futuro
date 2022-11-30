@@ -17,6 +17,7 @@ export class FormClienteComponent implements OnInit {
     private routerParams: ActivatedRoute,
   ) { }
 
+  public tituloDoBotao:String = "Cadastrar";
   private clienteServico: ClienteServico = {} as ClienteServico;
   public cliente:Cliente | undefined = {} as Cliente
 
@@ -29,6 +30,7 @@ export class FormClienteComponent implements OnInit {
   }
 
   private async editaCliente(id:Number){
+    this.tituloDoBotao = "Alterar";
     this.cliente = await this.clienteServico.buscaPorId(id);
   }
 

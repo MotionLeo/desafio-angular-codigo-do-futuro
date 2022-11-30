@@ -1,11 +1,10 @@
 <section class="page-section" id="contact" style="margin-top: 100px;">
     <div class="container">
         <div class="divider-custom">
-            <a routerLink="/form-clientes" class="btn btn-primary">Adicionar novo</a>
+            <a routerLink="/form-clientes" class="btn btn-primary ">Adicionar novo</a>
             <!-- <button class="btn btn-primary" (click)="novoCliente()">Adicionar novo</button> -->
         </div>
-        <p>lista-cliente works!</p>
-        <div class="row justify-content-center">
+        <div class="row ">
             <div class="col-lg-8 col-xl-7">
               <div *ngIf="clientes && clientes.length == 0" class="alert alert-primary" role="alert">
                   Não existe clientes cadastrados
@@ -25,7 +24,7 @@
                       <th scope="col">Cidade</th>
                       <th scope="col">Estado</th>
                       <th scope="col">Complemento</th>
-                      <!-- <th scope="col" colspan="2">Ações</th> -->
+                      <th scope="col" colspan="2">Ações</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -42,8 +41,9 @@
                       <td>{{cliente.cidade}}</td>
                       <td>{{cliente.estado}}</td>
                       <td>{{cliente.complemento}}</td>
-                      <!-- <td><a class="btn btn-warning" routerLink="/form/{{cliente.id}}">Alterar</a></td>
-                      <td><button class="btn btn-danger" [disabled]="!logadoService.adm" (click)="excluir(cliente)">Excluir</button></td> -->
+                      <td><a class="btn btn-warning" routerLink="/form-clientes/{{cliente.id}}">Alterar</a></td>
+                      <td><button class="btn btn-danger" (click)="excluir(cliente)">Excluir</button></td>
+                      <!-- <td><button class="btn btn-danger" [disabled]="!logadoService.adm" (click)="excluir(cliente)">Excluir</button></td> -->
                     </tr>
                   </tbody>
               </table>
