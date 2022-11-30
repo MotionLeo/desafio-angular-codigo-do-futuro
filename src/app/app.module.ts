@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MainRoutingModule } from '../app/main/main-routing.module';
 
@@ -7,12 +8,12 @@ import { AppComponent } from './app.component';
 import { ListaClienteComponent } from './pages/lista-cliente/lista-cliente.component';
 import { FormClienteComponent } from './pages/form-cliente/form-cliente.component';
 import { HeaderComponent } from './pages/navegacao/header/header.component';
-import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './pages/navegacao/footer/footer.component';
 import { TelefonePipe } from './pipes/telefone.pipe';
 import { CpfPipe } from './pipes/cpf.pipe';
 import { CepPipe } from './pipes/cep.pipe';
-
+import { LoginComponent } from './pages/login/login.component';
+import { LoginGuard } from './servicos/login.guard';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CepPipe } from './pipes/cep.pipe';
     FooterComponent,
     TelefonePipe,
     CpfPipe,
-    CepPipe
+    CepPipe,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,10 @@ import { CepPipe } from './pipes/cep.pipe';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    LoginGuard,
+  ],
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
