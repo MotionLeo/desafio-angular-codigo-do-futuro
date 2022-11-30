@@ -8,6 +8,10 @@ import { ListaClienteComponent } from './pages/lista-cliente/lista-cliente.compo
 import { FormClienteComponent } from './pages/form-cliente/form-cliente.component';
 import { HeaderComponent } from './pages/navegacao/header/header.component';
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from './pages/navegacao/footer/footer.component';
+import { TelefonePipe } from './pipes/telefone.pipe';
+import { CpfPipe } from './pipes/cpf.pipe';
+import { CepPipe } from './pipes/cep.pipe';
 
 
 @NgModule({
@@ -15,7 +19,11 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     HeaderComponent,
     ListaClienteComponent,
-    FormClienteComponent
+    FormClienteComponent,
+    FooterComponent,
+    TelefonePipe,
+    CpfPipe,
+    CepPipe
   ],
   imports: [
     BrowserModule,

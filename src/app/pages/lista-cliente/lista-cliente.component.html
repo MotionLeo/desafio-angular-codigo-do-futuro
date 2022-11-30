@@ -31,10 +31,10 @@
                     <tr *ngFor="let cliente of clientes">
                       <th scope="row">{{cliente.id}}</th>
                       <td>{{cliente.nome}}</td>
-                      <td>{{cliente.telefone}}</td>
+                      <td>{{cliente.telefone | telefone}}</td>
                       <td>{{cliente.email}}</td>
-                      <td>{{cliente.cpf}}</td>
-                      <td>{{cliente.cep}}</td>
+                      <td>{{cliente.cpf | cpf}}</td>
+                      <td>{{cliente.cep | cep}}</td>
                       <td>{{cliente.logradouro}}</td>
                       <td>{{cliente.numero}}</td>
                       <td>{{cliente.bairro}}</td>
