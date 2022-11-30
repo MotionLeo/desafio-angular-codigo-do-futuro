@@ -10,7 +10,7 @@
     Login
     </span>
     <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-    <input class="input100" type="text" name="email" placeholder="Email">
+    <input class="input100" type="text" id="nome" name="nome" [(ngModel)]="email"  placeholder="Email">
     <span class="focus-input100"></span>
     <span class="symbol-input100">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
@@ -19,7 +19,7 @@
     </span>
     </div>
     <div class="wrap-input100 validate-input" data-validate="Password is required">
-    <input class="input100" type="password" name="pass" placeholder="Password">
+    <input class="input100" type="password" [(ngModel)]="senha" name="pass" placeholder="Password">
     <span class="focus-input100"></span>
     <span class="symbol-input100">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
@@ -27,8 +27,12 @@
           </svg>
     </span>
     </div>
+
+    <div *ngIf="mensagem" class="alert alert-danger" role="alert">
+        {{mensagem}}
+    </div>   
     <div class="container-login100-form-btn">
-    <button class="login100-form-btn">
+    <button class="login100-form-btn" (click)="logar()">
     Login
     </button>
     </div>
