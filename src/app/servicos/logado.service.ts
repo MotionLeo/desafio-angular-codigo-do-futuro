@@ -23,10 +23,17 @@ export class LogadoService {
     this.adm = localStorage.getItem("adm") ? true : false
   }
 
+  public confirmacao: boolean= false
+
   public deslogar(){
+    this.confirmacao = confirm("Deseja sair?")
+    if(this.confirmacao === true){
     localStorage.clear()
     this.logado = false
     this.adm = false
-    this.router.navigateByUrl("/")
+    
+    this.router.navigateByUrl("/login")
+  }
+  return false
   }
 }
