@@ -26,7 +26,7 @@ export class ListaClienteComponent implements OnInit {
   }
   
   novoCliente(){
-    this.router.navigateByUrl("/form-clientes")
+    this.router.navigateByUrl("/form-clientes");
   }
 
   private async listaDeClientes(){

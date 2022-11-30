@@ -8,6 +8,11 @@ const routes: Routes = [
   {path: '', component: ListaClienteComponent},
   {path: 'clientes', component: ListaClienteComponent},
   {path: 'form-clientes', component: FormClienteComponent},
+  {path: 'form-clientes/:id', children: [
+    {path: '', redirectTo: 'alterar', pathMatch: 'full'},
+    {path: 'alterar', component: FormClienteComponent}
+  ] 
+  },
   {path: 'login', component: LoginComponent},
 ];
 

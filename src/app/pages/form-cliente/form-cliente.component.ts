@@ -18,27 +18,40 @@ export class FormClienteComponent implements OnInit {
   ) { }
 
   private clienteServico: ClienteServico = {} as ClienteServico;
-  public cliente:Cliente = {} as Cliente
+  public cliente:Cliente | undefined = {} as Cliente
 
   ngOnInit(): void {
     this.clienteServico = new ClienteServico(this.http);
+    let id:Number = this.routerParams.snapshot.params['id'];
+    if(id){
+      this.editaCliente(id);
+    }
+  }
+
+  private async editaCliente(id:Number){
+    this.cliente = await this.clienteServico.buscaPorId(id);
   }
 
   registrar(){
+    if(this.cliente && this.cliente.id > 0){
+      this.clienteServico.update(this.cliente)
+    }
+    else{
     this.clienteServico.criar({
       id: 0,
-      nome: this.cliente.nome,
-      telefone: this.cliente.telefone,
-      email: this.cliente.email,
-      cpf: this.cliente.cpf,
-      cep: this.cliente.cep,
-      logradouro: this.cliente.logradouro,
-      numero: this.cliente.numero,
-      bairro: this.cliente.bairro,
-      cidade: this.cliente.cidade,
-      estado: this.cliente.estado,
-      complemento: this.cliente.complemento,
+      nome: this.cliente?.nome,
+      telefone: this.cliente?.telefone,
+      email: this.cliente?.email,
+      cpf: this.cliente?.cpf,
+      cep: this.cliente?.cep,
+      logradouro: this.cliente?.logradouro,
+      numero: this.cliente?.numero,
+      bairro: this.cliente?.bairro,
+      cidade: this.cliente?.cidade,
+      estado: this.cliente?.estado,
+      complemento: this.cliente?.complemento,
     })
+    }
     this.router.navigateByUrl("/clientes");
   }
 }
