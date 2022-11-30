@@ -21,6 +21,7 @@ export class FormClienteComponent implements OnInit {
   public cliente:Cliente = {} as Cliente
 
   ngOnInit(): void {
+    this.clienteServico = new ClienteServico(this.http);
   }
 
   registrar(){

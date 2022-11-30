@@ -2,8 +2,52 @@
     <div class="container">
         <div class="divider-custom">
             <a routerLink="/form-clientes" class="btn btn-primary">Adicionar novo</a>
-            <button class="btn btn-primary" (click)="novoCliente()">Adicionar novo</button>
+            <!-- <button class="btn btn-primary" (click)="novoCliente()">Adicionar novo</button> -->
         </div>
         <p>lista-cliente works!</p>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7">
+              <div *ngIf="clientes && clientes.length == 0" class="alert alert-primary" role="alert">
+                  Não existe clientes cadastrados
+              </div>
+              <table *ngIf="clientes && clientes.length > 0" class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Nome</th>
+                      <th scope="col">Telefone</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">CPF</th>
+                      <th scope="col">CEP</th>
+                      <th scope="col">Logradouro</th>
+                      <th scope="col">Número</th>
+                      <th scope="col">Bairro</th>
+                      <th scope="col">Cidade</th>
+                      <th scope="col">Estado</th>
+                      <th scope="col">Complemento</th>
+                      <!-- <th scope="col" colspan="2">Ações</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let cliente of clientes">
+                      <th scope="row">{{cliente.id}}</th>
+                      <td>{{cliente.nome}}</td>
+                      <td>{{cliente.telefone}}</td>
+                      <td>{{cliente.email}}</td>
+                      <td>{{cliente.cpf}}</td>
+                      <td>{{cliente.cep}}</td>
+                      <td>{{cliente.logradouro}}</td>
+                      <td>{{cliente.numero}}</td>
+                      <td>{{cliente.bairro}}</td>
+                      <td>{{cliente.cidade}}</td>
+                      <td>{{cliente.estado}}</td>
+                      <td>{{cliente.complemento}}</td>
+                      <!-- <td><a class="btn btn-warning" routerLink="/form/{{cliente.id}}">Alterar</a></td>
+                      <td><button class="btn btn-danger" [disabled]="!logadoService.adm" (click)="excluir(cliente)">Excluir</button></td> -->
+                    </tr>
+                  </tbody>
+              </table>
+            </div>
+        </div>
     </div>
 </section>
