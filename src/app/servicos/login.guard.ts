@@ -11,7 +11,7 @@ export class LoginGuard implements CanActivate {
     private logadoService:LogadoService,
     private router:Router
   ){}
-  
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
