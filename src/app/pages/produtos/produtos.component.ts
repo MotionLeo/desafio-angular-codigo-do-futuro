@@ -33,7 +33,7 @@ export class ProdutosComponent implements OnInit {
   }
 
   async excluir(produto:Produto){
-    if(confirm("Tem certeza que deseja excluir esse cliente?")){
+    if(confirm("Tem certeza que deseja excluir esse produto?")){
       await this.produtoServico.excluirPorId(produto.id)
       this.produtos = await this.produtoServico.lista()
     }
