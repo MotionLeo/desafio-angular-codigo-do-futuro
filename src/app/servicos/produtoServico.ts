@@ -23,6 +23,11 @@ export class ProdutoServico{
         return produtoRest;
     }
 
+    public async getLast(): Promise<Produto | undefined> {
+        let produto:Produto[] | undefined = await firstValueFrom(this.http.get<Produto[]>(`${environment.api}/produtosLast`))
+        return produto.at(0);
+    }
+
     public async buscaPorId(id:Number): Promise<Produto | undefined> {
         return await firstValueFrom(this.http.get<Produto | undefined>(`${environment.api}/produtos/${id}`))
     }
