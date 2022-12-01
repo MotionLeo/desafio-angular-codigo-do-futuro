@@ -6,12 +6,16 @@ import { Pedido } from "../models/pedido";
 
 export class Carrinho{
 
-    private static carrinho: (PedidoProduto)[]=[];
+    private static carrinho: (PedidoProduto)[]=[{"id":101,"pedido_id":1,"produto_id":1,"valor":10,"quantidade":2}];
     private static id:number=0;
     private static pedido: Pedido;
 
     public static buscaTamanho():number{
         return Carrinho.carrinho.length;
+    }
+
+    public static listar():(PedidoProduto)[]{
+        return Carrinho.carrinho;
     }
 
     public static setPedido(cliente_id:Number){
@@ -26,14 +30,7 @@ export class Carrinho{
     }
 
     public static excluirProduto(id:number):void{
-        let listaNova: (PedidoProduto)[] = []
-        Carrinho.carrinho.forEach(item=>{
-            if(item?.id != id){
-                listaNova.push(item)
-            }else{
-                Carrinho.pedido.valor_total=new Number(Number(Carrinho.pedido.valor_total)-Number(item.quantidade)*Number(item.valor))
-            }});
-        Carrinho.carrinho=listaNova;
+        Carrinho.carrinho.splice(id,1)
     }
 
     public static async salvar(http:HttpClient):Promise<void>{

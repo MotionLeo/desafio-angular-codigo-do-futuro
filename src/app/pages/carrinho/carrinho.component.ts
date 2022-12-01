@@ -19,7 +19,7 @@ export class CarrinhoComponent implements OnInit {
     private router:Router,
     private carrinhoObserverService: CarrinhoObserverService
   ) { }
-  public items:  (PedidoProduto)[]|undefined=[];
+  public items:  (PedidoProduto)[]=[];
   public nomes:String[]=[]
   ngOnInit(): void {
     this.produtoServico = new ProdutoServico(this.http);
@@ -27,7 +27,7 @@ export class CarrinhoComponent implements OnInit {
     this.listaItems();
   }
   private async listaItems() {
-    this.items = (await this.pedidoProdutoServico.lista())
+    this.items = Carrinho.listar();
     this.items?.forEach(async item =>{
       let nome = (await this.produtoServico.buscaPorId(item.produto_id))
       console.log("a")
@@ -48,6 +48,7 @@ export class CarrinhoComponent implements OnInit {
 
   Excluir(id:number){
     Carrinho.excluirProduto(id);
+    this.items?.splice(id,1)
   }
 
 }
