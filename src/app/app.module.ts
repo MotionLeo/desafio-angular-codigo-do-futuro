@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MainRoutingModule } from '../app/main/main-routing.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,7 +25,7 @@ import { HomeComponent } from './pages/home/home.component';
     AppComponent,
     HeaderComponent,
     ListaClienteComponent,
-    CarrinhoComponent
+    CarrinhoComponent,
     FormClienteComponent,
     FooterComponent,
     TelefonePipe,
