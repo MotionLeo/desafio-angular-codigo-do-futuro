@@ -14,6 +14,7 @@ export class PedidoProdutoServico{
     }
 
     public async criar(pedidoProduto:PedidoProduto): Promise<PedidoProduto | undefined> {
+        console.log(`${environment.api}/pedidosProdutos/`, pedidoProduto)
         let pedidoProdutoRest:PedidoProduto | undefined = await firstValueFrom(this.http.post<PedidoProduto>(`${environment.api}/pedidosProdutos/`, pedidoProduto))
         return pedidoProdutoRest;
     }
@@ -25,6 +26,11 @@ export class PedidoProdutoServico{
 
     public async buscaPorId(id:Number): Promise<PedidoProduto | undefined> {
         return await firstValueFrom(this.http.get<PedidoProduto | undefined>(`${environment.api}/pedidosProdutos/${id}`))
+    }
+
+    public async getLast(): Promise<PedidoProduto | undefined> {
+        let pedidoProduto:PedidoProduto[] | undefined = await firstValueFrom(this.http.get<PedidoProduto[]>(`${environment.api}/pedidosProdutosLast`))
+        return pedidoProduto.at(0);
     }
 
     public excluirPorId(id:Number) {
