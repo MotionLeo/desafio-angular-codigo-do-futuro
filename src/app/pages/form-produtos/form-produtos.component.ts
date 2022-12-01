@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Produto } from 'src/app/models/produto';
-import { ProdutoServico } from 'src/app/servicos/produto';
+import { ProdutoServico } from 'src/app/servicos/produtoServico';
 
 
 @Component({
@@ -39,13 +39,18 @@ export class FormProdutosComponent implements OnInit {
       this.produtoServico.update(this.produto)
     }
     else{
-    this.produtoServico.criar({
-      id: 0,
-      nome: this.produto?.nome,
-      descricao: this.produto?.descricao,
-      valor: this.produto?.valor,
-      qtd_estoque: this.produto?.qtd_estoque,
-    })
+      let produto = {
+        id: 0,
+        nome: new String (""),
+        descricao: this.produto?.descricao,
+        valor: this.produto?.valor,
+        qtd_estoque: this.produto?.qtd_estoque,
+      }
+      if(!this.produto){}
+      else{
+        produto.nome = this.produto.nome;
+        this.produtoServico.criar(produto)
+      }
     }
     this.router.navigateByUrl("/produtos");
   }

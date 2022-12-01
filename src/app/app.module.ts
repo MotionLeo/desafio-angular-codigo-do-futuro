@@ -30,7 +30,7 @@ registerLocaleData(ptBr);
     HeaderComponent,
     ListaClienteComponent,
     ProdutosComponent,
-    FormProdutosComponent
+    FormProdutosComponent,
     CarrinhoComponent,
     FormClienteComponent,
     FooterComponent,

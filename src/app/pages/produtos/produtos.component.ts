@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Produto } from 'src/app/models/produto';
-import { ProdutoServico } from 'src/app/servicos/produto';
+import { ProdutoServico } from 'src/app/servicos/produtoServico';
 
 @Component({
   selector: 'app-produtos',
