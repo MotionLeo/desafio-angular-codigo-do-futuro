@@ -27,7 +27,22 @@ export class PedidoServico{
         return await firstValueFrom(this.http.get<Pedido | undefined>(`${environment.api}/pedidos/${id}`))
     }
 
+    public async getLast(): Promise<Pedido | undefined> {
+        let pedido:Pedido | undefined = await firstValueFrom(this.http.get<Pedido>(`${environment.api}/pedidosLast`))
+        console.log(pedido.id)
+        return pedido;
+    }
+
     public excluirPorId(id:Number) {
         firstValueFrom(this.http.delete(`${environment.api}/pedidos/${id}`))
+    }
+
+    public async buscaPorClienteId(cliente_id:Number): Promise<Pedido[] | undefined> {
+        let pedidos:Pedido[] | undefined = await firstValueFrom(this.http.get<Pedido[]>(`${environment.api}/pedidos`))
+        return pedidos.filter(pedido => cliente_id==pedido.cliente_id);
+    }
+
+    public async buscaPorProdutoId(produto_id:Number): Promise<Pedido | undefined> {
+        return await firstValueFrom(this.http.get<Pedido | undefined>(`${environment.api}/pedidos/produtos/${produto_id}`));
     }
 }

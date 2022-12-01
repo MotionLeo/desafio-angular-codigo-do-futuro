@@ -13,6 +13,11 @@ export class ClienteServico{
         return clientes;
     }
 
+    public async getLast(): Promise<Cliente | undefined> {
+        let cliente:Cliente[] | undefined = await firstValueFrom(this.http.get<Cliente[]>(`${environment.api}/clientesLast`))
+        return cliente.at(0);
+    }
+
     public async criar(cliente:Cliente): Promise<Cliente | undefined> {
         let clienteRest:Cliente | undefined = await firstValueFrom(this.http.post<Cliente>(`${environment.api}/clientes/`, cliente))
         return clienteRest;
