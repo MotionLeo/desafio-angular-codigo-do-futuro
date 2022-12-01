@@ -14,6 +14,8 @@ import { CpfPipe } from './pipes/cpf.pipe';
 import { CepPipe } from './pipes/cep.pipe';
 import { LoginComponent } from './pages/login/login.component';
 import { LoginGuard } from './servicos/login.guard';
+import { NotFoundComponent } from './pages/navegacao/not-found/not-found.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { LoginGuard } from './servicos/login.guard';
     CpfPipe,
     CepPipe,
     LoginComponent,
+    NotFoundComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
