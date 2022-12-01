@@ -28,8 +28,9 @@ export class PedidoServico{
     }
 
     public async getLast(): Promise<Pedido | undefined> {
-        let pedido:Pedido[] | undefined = await firstValueFrom(this.http.get<Pedido[]>(`${environment.api}/pedidosLast`))
-        return pedido.at(0);
+        let pedido:Pedido | undefined = await firstValueFrom(this.http.get<Pedido>(`${environment.api}/pedidosLast`))
+        console.log(pedido.id)
+        return pedido;
     }
 
     public excluirPorId(id:Number) {

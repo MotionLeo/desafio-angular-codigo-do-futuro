@@ -14,6 +14,7 @@ export class PedidoProdutoServico{
     }
 
     public async criar(pedidoProduto:PedidoProduto): Promise<PedidoProduto | undefined> {
+        console.log(`${environment.api}/pedidosProdutos/`, pedidoProduto)
         let pedidoProdutoRest:PedidoProduto | undefined = await firstValueFrom(this.http.post<PedidoProduto>(`${environment.api}/pedidosProdutos/`, pedidoProduto))
         return pedidoProdutoRest;
     }

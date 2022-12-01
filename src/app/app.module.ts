@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ListaClienteComponent } from './pages/lista-cliente/lista-cliente.component';
 import { HeaderComponent } from './pages/navegacao/header/header.component';
 import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
   imports: [
     BrowserModule,
     MainRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
