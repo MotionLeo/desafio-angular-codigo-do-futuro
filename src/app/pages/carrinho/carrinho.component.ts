@@ -70,6 +70,7 @@ export class CarrinhoComponent implements OnInit {
 
   Excluir(id:number){
     Carrinho.excluirProduto(id);
+    this.carrinhoObserverService.updateQuantidade();
     this.calcularValorTotal();
   }
 

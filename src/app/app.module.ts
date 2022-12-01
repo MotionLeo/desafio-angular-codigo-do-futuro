@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { ListaClienteComponent } from './pages/lista-cliente/lista-cliente.component';
 import { FormClienteComponent } from './pages/form-cliente/form-cliente.component';
 import { HeaderComponent } from './pages/navegacao/header/header.component';
-
-
 import { CarrinhoComponent } from './pages/carrinho/carrinho.component';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './pages/navegacao/footer/footer.component';
@@ -18,6 +16,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { LoginGuard } from './servicos/login.guard';
 import { NotFoundComponent } from './pages/navegacao/not-found/not-found.component';
 import { HomeComponent } from './pages/home/home.component';
+import { CarrinhoNotificacaoComponent } from './pages/carrinho-notificacao/carrinho-notificacao.component';
 
 
 @NgModule({
@@ -34,6 +33,7 @@ import { HomeComponent } from './pages/home/home.component';
     LoginComponent,
     NotFoundComponent,
     HomeComponent,
+    CarrinhoNotificacaoComponent,
   ],
   imports: [
     BrowserModule,

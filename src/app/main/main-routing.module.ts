@@ -11,7 +11,7 @@ import { LoginGuard } from '../servicos/login.guard';
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'carrinho',component: CarrinhoComponent},
+  {path: 'carrinho',component: CarrinhoComponent, canActivate:[LoginGuard]},
   {path: 'clientes', component: ListaClienteComponent, canActivate:[LoginGuard]},
   {path: 'form-clientes', component: FormClienteComponent, canActivate:[LoginGuard]},
   {path: 'form-clientes/:id', canActivate:[LoginGuard], children: [
