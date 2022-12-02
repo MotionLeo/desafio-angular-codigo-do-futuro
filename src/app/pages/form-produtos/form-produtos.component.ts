@@ -34,24 +34,49 @@ export class FormProdutosComponent implements OnInit {
     this.produto = await this.produtoServico.buscaPorId(id);
   }
 
-  registrar(){
+  async registrar(){
     if(this.produto && this.produto.id > 0){
-      this.produtoServico.update(this.produto)
+      await this.produtoServico.update(this.produto);
     }
     else{
-      let produto = {
-        id: 0,
-        nome: new String (""),
-        descricao: this.produto?.descricao,
-        valor: this.produto?.valor,
-        qtd_estoque: this.produto?.qtd_estoque,
-      }
+      // let nome:String = ""
+      // let valor:Number = 0
+      // if(this.produto?.nome) nome = this.produto.nome
+      // if(this.produto?.valor) valor = this.produto.valor
+      // let produto = {
+      //   id: 0,
+      //   nome: nome,
+      //   descricao: this.produto?.descricao,
+      //   valor: valor,
+      //   qtd_estoque: this.produto?.qtd_estoque,
+      // }
       if(!this.produto){}
       else{
-        produto.nome = this.produto.nome;
-        this.produtoServico.criar(produto)
+        await this.produtoServico.criar(this.verificaUndefined());
       }
     }
     this.router.navigateByUrl("/produtos");
+  }
+
+  verificaUndefined(){
+    let nome:String = "";
+    let descricao:String = "";
+    let valor:Number = 0;
+    let qtd_estoque:Number = 0;
+
+    if(this.produto?.nome) nome = this.produto.nome;
+    if(this.produto?.descricao) descricao = this.produto.descricao;
+    if(this.produto?.valor) valor = this.produto.valor;
+    if(this.produto?.qtd_estoque) qtd_estoque = this.produto.qtd_estoque;
+
+    let produto = {
+      id: 0,
+      nome: nome,
+      descricao: descricao,
+      valor: valor,
+      qtd_estoque: qtd_estoque,
+    }
+
+    return produto
   }
 }

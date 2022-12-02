@@ -38,4 +38,8 @@ export class ProdutosComponent implements OnInit {
       this.produtos = await this.produtoServico.lista()
     }
   }
+
+  number(a : Number){
+    return Number(a)
+  }
 }
