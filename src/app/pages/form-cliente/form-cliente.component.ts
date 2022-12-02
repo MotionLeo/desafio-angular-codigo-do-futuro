@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { VirtualTimeScheduler } from 'rxjs';
 import { Cliente } from 'src/app/models/cliente';
 import { Estado } from 'src/app/models/estado';
 import { Municipio } from 'src/app/models/municipio';
@@ -50,6 +51,8 @@ export class FormClienteComponent implements OnInit {
 
   public async importarCidades(){
     this.municipios= await this.IBGEServico.listaMunicipiosPorEstado(Number(this.estados.at(Number(this.estadoSelecionado.split("-")[0])-1)?.id));
+   
+    this.municipioSelecionado="1- ";
     console.log(this.estadoSelecionado)
     console.log(this.municipioSelecionado)
   }
@@ -84,5 +87,8 @@ export class FormClienteComponent implements OnInit {
     })
     }
     this.router.navigateByUrl("/clientes");
+  }
+  number(val:String){
+    return Number(val);
   }
 }
