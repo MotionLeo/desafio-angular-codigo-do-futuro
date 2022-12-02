@@ -35,12 +35,16 @@
                     <input type="text" class="form-control" id="bairro-cliente" name="bairro-cliente" [(ngModel)] = "cliente.bairro" placeholder="Insira seu bairro">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1" style="padding: 10px;">Cidade</label>
-                    <input type="text" class="form-control" id="idade-cliente" name="idade-cliente" [(ngModel)] = "cliente.cidade" placeholder="Insira seu cidade">
+                    <label for="exampleInputEmail1" style="padding: 10px;">Estado</label>
+                    <select name="teste" id="required" class="form-control form-control-chosen-required" (change)="importarCidades()" [(ngModel)]="estadoSelecionado" data-placeholder="CPF - Nome do cliente" >
+                        <option *ngFor="let estado of estados; index as i" id="{{estado.id}}"><div id>{{(i+1)+"- "+estado.nome}}</div></option>
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1" style="padding: 10px;">Estado</label>
-                    <input type="text" class="form-control" id="estado-cliente" name="estado-cliente" [(ngModel)] = "cliente.estado" placeholder="Insira seu estado">
+                    <label for="exampleInputEmail1" style="padding: 10px;">Cidade</label>
+                    <select name="teste" id="required" class="form-control form-control-chosen-required" [(ngModel)]="municipioSelecionado" data-placeholder="CPF - Nome do cliente" >
+                        <option *ngFor="let municipio of municipios; index as i" id="{{municipio.id}}"><div id>{{(i+1)+"- "+municipio.nome}}</div></option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1" style="padding: 10px;">Complemento</label>

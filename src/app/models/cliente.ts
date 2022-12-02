@@ -11,4 +11,5 @@ export interface Cliente {
     cidade: String | undefined
     estado: String | undefined
     complemento: String | undefined
+    admin: boolean
 }

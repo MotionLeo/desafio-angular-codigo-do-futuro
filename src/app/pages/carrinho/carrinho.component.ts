@@ -49,10 +49,8 @@ export class CarrinhoComponent implements OnInit {
     }
     this.items?.forEach(async item =>{
       let nome = await this.produtoServico.buscaPorId(item.produto_id);
-      if(!nome){
-        
-      }else{
-        this.nomes.push(nome?.nome);
+      if(!nome){}else{
+        this.nomes.push(nome.nome);
       }
     });
   }
