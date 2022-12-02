@@ -25,7 +25,7 @@
                       <th scope="row">{{produto.id}}</th>
                       <td>{{produto.nome}}</td>
                       <td>{{produto.descricao}}</td>
-                      <td>{{produto.valor}}</td>
+                      <td>{{number(produto.valor) | currency}}</td>
                       <td>{{produto.qtd_estoque}}</td>
                       <td><a class="btn btn-warning" routerLink="/form-produto/{{produto.id}}">Alterar</a></td>
                       <td><button class="btn btn-danger" (click)="excluir(produto)">Excluir</button></td>

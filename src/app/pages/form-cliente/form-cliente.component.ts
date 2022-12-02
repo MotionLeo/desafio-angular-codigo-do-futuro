@@ -34,26 +34,71 @@ export class FormClienteComponent implements OnInit {
     this.cliente = await this.clienteServico.buscaPorId(id);
   }
 
-  registrar(){
+   async registrar(){
     if(this.cliente && this.cliente.id > 0){
-      this.clienteServico.update(this.cliente)
+      await this.clienteServico.update(this.cliente)
     }
     else{
-    this.clienteServico.criar({
-      id: 0,
-      nome: this.cliente?.nome,
-      telefone: this.cliente?.telefone,
-      email: this.cliente?.email,
-      cpf: this.cliente?.cpf,
-      cep: this.cliente?.cep,
-      logradouro: this.cliente?.logradouro,
-      numero: this.cliente?.numero,
-      bairro: this.cliente?.bairro,
-      cidade: this.cliente?.cidade,
-      estado: this.cliente?.estado,
-      complemento: this.cliente?.complemento,
-    })
+      // id: 0,
+      // nome: this.cliente?.nome,
+      // telefone: this.cliente?.telefone,
+      // email: this.cliente?.email,
+      // cpf: this.cliente?.cpf,
+      // cep: this.cliente?.cep,
+      // logradouro: this.cliente?.logradouro,
+      // numero: this.cliente?.numero,
+      // bairro: this.cliente?.bairro,
+      // cidade: this.cliente?.cidade,
+      // estado: this.cliente?.estado,
+      // complemento: this.cliente?.complemento,
+      if(!this.cliente){}
+      else{
+        await this.clienteServico.criar(this.verificaUndefined());
+      }
     }
     this.router.navigateByUrl("/clientes");
+  }
+
+  verificaUndefined(){
+    let nome:String = "";
+    let telefone:String = "";
+    let email:String = "";
+    let cpf:String = "";
+    let cep:String = "";
+    let logradouro:String = "";
+    let numero:Number = 0;
+    let bairro:String = "";
+    let cidade:String = "";
+    let estado:String = "";
+    let complemento:String = "";
+
+    if(this.cliente?.nome) nome = this.cliente.nome;
+    if(this.cliente?.telefone) telefone = this.cliente.telefone;
+    if(this.cliente?.email) email = this.cliente.email;
+    if(this.cliente?.cpf) cpf = this.cliente.cpf;
+    if(this.cliente?.cep) cep = this.cliente.cep;
+    if(this.cliente?.logradouro) logradouro = this.cliente.logradouro;
+    if(this.cliente?.numero) numero = this.cliente.numero;
+    if(this.cliente?.bairro) bairro = this.cliente.bairro;
+    if(this.cliente?.cidade) cidade = this.cliente.cidade;
+    if(this.cliente?.estado) estado = this.cliente.estado;
+    if(this.cliente?.complemento) complemento = this.cliente.complemento;
+
+    let cliente = {
+      id: 0,
+      nome: nome,
+      telefone: telefone,
+      email: email,
+      cpf: cpf,
+      cep: cep,
+      logradouro: logradouro,
+      numero: numero,
+      bairro: bairro,
+      cidade: cidade,
+      estado: estado,
+      complemento: complemento,
+    }
+
+    return cliente
   }
 }
