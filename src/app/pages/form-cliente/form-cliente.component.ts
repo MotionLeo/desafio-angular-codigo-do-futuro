@@ -69,18 +69,6 @@ export class FormClienteComponent implements OnInit {
       await this.clienteServico.update(this.cliente)
     }
     else{
-      // id: 0,
-      // nome: this.cliente?.nome,
-      // telefone: this.cliente?.telefone,
-      // email: this.cliente?.email,
-      // cpf: this.cliente?.cpf,
-      // cep: this.cliente?.cep,
-      // logradouro: this.cliente?.logradouro,
-      // numero: this.cliente?.numero,
-      // bairro: this.cliente?.bairro,
-      // cidade: this.cliente?.cidade,
-      // estado: this.cliente?.estado,
-      // complemento: this.cliente?.complemento,
       if(!this.cliente){}
       else{
         await this.clienteServico.criar(this.verificaUndefined());
