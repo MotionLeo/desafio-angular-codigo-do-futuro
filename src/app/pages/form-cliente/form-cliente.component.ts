@@ -86,8 +86,10 @@ export class FormClienteComponent implements OnInit {
     let logradouro:String = "";
     let bairro:String ="";
     let numero:Number = 0;
-    let cidade = this.municipios?.at(Number(this.municipioSelecionado.split("-")[0])-1)?.nome;
-    let estado:String = this.estadoSelecionado.split("-")[1].trim();
+    let cidade:String= ""
+    let tipoCidade=this.municipios?.at(Number(this.municipioSelecionado.split("-")[0])-1)?.nome;
+    let estado:String= this.estadoSelecionado.split("-")[1].trim();
+
     let complemento:String = "";
 
     if(this.cliente?.nome) nome = this.cliente.nome;
@@ -98,7 +100,7 @@ export class FormClienteComponent implements OnInit {
     if(this.cliente?.logradouro) logradouro = this.cliente.logradouro;
     if(this.cliente?.numero) numero = this.cliente.numero;
     if(this.cliente?.bairro) bairro = this.cliente.bairro;
-    if(this.cliente?.cidade) cidade = this.cliente.cidade;
+    if(this.cliente?.cidade) cidade = tipoCidade;
     if(this.cliente?.estado) estado = this.cliente.estado;
     if(this.cliente?.complemento) complemento = this.cliente.complemento;
 
