@@ -7,8 +7,8 @@
     </option>
   </select>
   
-  <div class="resu"><h1>Resumo do pedido
-  </h1>
+  <div class="resu" *ngIf="items.length>0"><h3>Resumo do pedido
+  </h3>
   </div>
   <table *ngIf="items.length>0" class="table table-hover">
     
@@ -47,7 +47,7 @@
       </tr>
     </tbody>
   </table>
-  <div *ngIf="items.length==0">
-    <h1>O Carrinho está vazio</h1>
+  <div class="para" *ngIf="items.length==0">
+    <h3 class="para1">O Carrinho está vazio</h3>
   </div>
 </div>

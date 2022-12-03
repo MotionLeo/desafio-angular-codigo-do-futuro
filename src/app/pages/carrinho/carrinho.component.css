@@ -14,7 +14,7 @@ select{
 }
 
 .table{
-    width: 550px;
+    width: 750px;
     align-self: end;
     border-style:inset;
     text-align-last: center;
@@ -28,13 +28,20 @@ tr{
 }
 
 .form-control{
-    visibility: hidden;
-}
+    visibility: hidden;}
 
 .resu{
     align-self: end;
     border-style:inset;
     text-align-last: center;
-    width: 550px;
+    width: 750px;
     background: #f8f8f8;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
 }
+
+.para1{
+    padding-top: 15px;
+    text-align: center;
+}
+
