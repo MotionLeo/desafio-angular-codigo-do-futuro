@@ -100,7 +100,7 @@ export class FormClienteComponent implements OnInit {
     if(this.cliente?.logradouro) logradouro = this.cliente.logradouro;
     if(this.cliente?.numero) numero = this.cliente.numero;
     if(this.cliente?.bairro) bairro = this.cliente.bairro;
-    if(this.cliente?.cidade) cidade = tipoCidade;
+    if(tipoCidade) cidade = tipoCidade;
     if(this.cliente?.estado) estado = this.cliente.estado;
     if(this.cliente?.complemento) complemento = this.cliente.complemento;
 
