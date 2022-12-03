@@ -5,4 +5,5 @@ export interface Produto {
     descricao: String
     valor: Number
     qtd_estoque: Number
+    custo:Number
 }

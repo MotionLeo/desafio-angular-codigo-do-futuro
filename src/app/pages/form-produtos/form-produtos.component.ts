@@ -46,7 +46,6 @@ export class FormProdutosComponent implements OnInit {
       }else{
         this.selecionado.push(false)
       }
-      console.log(categoria.id.toString());
       this.categorias.push(categoria);
     });
   }
@@ -54,6 +53,8 @@ export class FormProdutosComponent implements OnInit {
     this.tituloDoBotao = "Alterar";
     this.produto = await this.produtoServico.buscaPorId(id);
     if(this.produto?.id)this.categoria_id=this.produto.id;
+    let categoria_id=this.produto?.categoria_id;
+    if(categoria_id)this.categoria_id=categoria_id
   }
 
   async registrar(){
@@ -94,6 +95,7 @@ export class FormProdutosComponent implements OnInit {
     let descricao:String = "";
     let valor:Number = 0;
     let qtd_estoque:Number = 0;
+    let custo:Number = 0;
 
 
     if(this.produto?.id) id = this.produto.id;
@@ -101,6 +103,7 @@ export class FormProdutosComponent implements OnInit {
     if(this.produto?.descricao) descricao = this.produto.descricao;
     if(this.produto?.valor) valor = this.produto.valor;
     if(this.produto?.qtd_estoque) qtd_estoque = this.produto.qtd_estoque;
+    if(this.produto?.custo) custo = this.produto.custo;
 
     let produto = {
       id: id,
@@ -109,6 +112,7 @@ export class FormProdutosComponent implements OnInit {
       descricao: descricao,
       valor: valor,
       qtd_estoque: qtd_estoque,
+      custo:custo
     }
 
     return produto

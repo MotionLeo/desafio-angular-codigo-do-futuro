@@ -2,14 +2,20 @@
     <div class="container">
         <div>
             <div class="modelo">
-                <input type="checkbox" id="data" name="data">
-                <label for="labelFiltro" style="display: block;">Data</label>
-                <input type="checkbox" id="produtos" name="produtos">
+                <input type="date" id="dataI" name="dataI" [(ngModel)]="dataInicial">
+                <label for="labelFiltro" style="display: block;">Data Inicio</label>
+                <input type="date" id="dataF" name="dataF" [(ngModel)]="dataFinal">
+                <label for="labelFiltro" style="display: block;">Data Final</label>
                 <label for="labelFiltro" style="display: block;">Produtos</label>
+                <select name="teste" id="required" class="form-control form-control-chosen-required" [(ngModel)] = "categoriaSelecionado" data-placeholder="CPF - Nome do cliente" >
+                        <option>0- Todas</option>
+                        <option *ngFor="let categoria of categoriasMostradas; index as i" id="{{categoria.id}}">
+                            {{(i+1)+"- "+categoria.nome}}</option>
+                    </select>
             </div>
             <div class="modelo">
                 <label for="labelTotal" style="display: block;">Total</label>
-                <label for="labelTotalView" style="display: block;">Total aqui</label>
+                <label for="labelTotalView" style="display: block;">{{valorTotal}}</label>
             </div>
             <div class="modelo">
                 <label for="labelSoma" style="display: block;">Soma</label>
@@ -25,7 +31,7 @@
             Gráfico aqui
         </div>
         <hr>
-        <div class="row ">
+        <!--<div class="row ">
             <div class="col-lg-8 col-xl-7">
             <div *ngIf="pedidos && pedidos.length == 0" class="alert alert-primary" role="alert">
                 Não existem pedidos cadastrados
@@ -40,7 +46,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let pedido of pedidos.slice(0, 5)">
+                    <tr *ngFor="let pedido of pedidosMostrados.slice(0, 5)">
                     <th scope="row">{{pedido.id}}</th>
                     <td>{{pedido.cliente_id}}</td>
                     <td>{{number(pedido.valor_total) | currency}}</td>
@@ -50,6 +56,6 @@
                 <label class="naDireita" routerLink="/lista-completa">Mostrar tudo</label>
             </table>
             </div>
-        </div>
+        </div>-->
     </div>
 </section>
