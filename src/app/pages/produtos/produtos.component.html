@@ -24,7 +24,7 @@
                   <tbody>
                     <tr *ngFor="let produto of produtos">
                       <th scope="row">{{produto.id}}</th>
-                      <td>{{this.nomesCategorias[number(produto.categoria_id)]}}</td>
+                      <td>{{this.nomesCategorias[number(produto.categoria_id)-1]}}</td>
                       <td>{{produto.nome}}</td>
                       <td>{{produto.descricao}}</td>
                       <td>{{number(produto.valor) | currency}}</td>

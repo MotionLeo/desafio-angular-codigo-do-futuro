@@ -32,14 +32,10 @@ export class ProdutosComponent implements OnInit {
 
   private async listaDeProdutos(){
     let produtos = await this.produtoServico.lista();
-    produtos?.forEach(async produto=>{
-      this.nomesCategorias.push();
-    })
     let i=0;
-    produtos?.forEach(async produto=>{
-      let categoria  = await new CategoriaServico(this.http).buscaPorId(produto.categoria_id);
-      if(categoria?.nome) this.nomesCategorias[i]=categoria.nome
-      i++
+    let categorias=await new CategoriaServico(this.http).lista();
+    categorias?.forEach(categoria=>{
+      this.nomesCategorias.push(categoria.nome);
     })
     console.log(this.nomesCategorias);
     this.produtos=produtos;
