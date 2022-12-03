@@ -5,11 +5,11 @@ import { Pedido } from 'src/app/models/pedido';
 import { PedidoServico } from 'src/app/servicos/pedidoServico';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-lista-pedidos',
+  templateUrl: './lista-pedidos.component.html',
+  styleUrls: ['./lista-pedidos.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ListaPedidosComponent implements OnInit {
 
   constructor(
     private router: Router,
@@ -27,10 +27,9 @@ export class HomeComponent implements OnInit {
 
   private async listaDePedidos(){
     this.pedidos = await this.pedidosServico.lista();
-    //this.pedidos?.slice(Math.max(this.pedidos.length -5 , 1));
-    this.pedidos = this.pedidos?.reverse();
   }
   number (a : Number){
     return Number(a)
   }
+
 }
