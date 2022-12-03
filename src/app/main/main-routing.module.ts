@@ -12,6 +12,7 @@ import { LoginGuard } from '../servicos/login.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
   {path: 'produtos', component: ProdutosComponent},
   {path: 'form-produto', component: FormProdutosComponent},

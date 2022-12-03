@@ -16,7 +16,11 @@
         <th scope="row" >{{item.id}}</th>
         <td>{{nomes.at(i)}}</td>
         <td>{{item.valor}}</td>
-        <td>{{item.quantidade}}</td>
+        <td>
+          <button id="adicionar" type="button" class="btn btn-primary" style="margin-right: 10px;">+</button>
+          {{item.quantidade}}
+          <button id="retirar" type="button" class="btn btn-danger" style="margin-left: 10px;">-</button>
+        </td>
         <td>{{multiplicacao(item.quantidade,item.valor)}}</td>
         <td><button id="proximo" type="submit" class="btn btn-primary" (click)="Excluir(i)">Excluir</button></td>
     </tr>
