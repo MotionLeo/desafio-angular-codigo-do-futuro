@@ -10,6 +10,7 @@ export class Carrinho{
     {"id":202,"pedido_id":2,"produto_id":2,"valor":10,"quantidade":2}];
     private static id:number=0;
     private static pedido: Pedido={"id":2,"cliente_id":3,"valor_total":40,"data":new Date((new Date()).getTime())};
+    
     public static buscaTamanho():number{
         return Carrinho.carrinho.length;
     }
@@ -30,17 +31,20 @@ export class Carrinho{
         Carrinho.id++;
         pedidoProduto.id=Carrinho.id;
         Carrinho.carrinho.push(pedidoProduto);
-        Carrinho.pedido.valor_total=new Number(Number(Carrinho.pedido.valor_total)+Number(pedidoProduto.quantidade)*Number(pedidoProduto.valor))
-    }
+     }
+
 
     public static excluirProduto(id:number):void{
         console.log(Carrinho.carrinho);
         let item=Carrinho.carrinho.splice(id,1);
-        Carrinho.pedido.valor_total=new Number(Number(Carrinho.pedido.valor_total)-Number(item.at(0)?.quantidade)*Number(item.at(0)?.valor))
-    }
+        }
 
     public static getValor_Total():Number{
-        return Carrinho.pedido.valor_total;
+        let total=0;
+        Carrinho.carrinho.forEach(item=>{
+            total+=Number(item.quantidade)*Number(item.valor);
+        })
+        return Carrinho.pedido.valor_total=new Number(total);
     }
 
     public static async salvar(http:HttpClient):Promise<void>{

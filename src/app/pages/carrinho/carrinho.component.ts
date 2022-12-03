@@ -80,6 +80,7 @@ export class CarrinhoComponent implements OnInit {
   calcularValorTotal() {
     this.valor_total=Carrinho.getValor_Total();
   }
+  
   async Subtrair(id:number){
     let itemE:PedidoProduto={} as PedidoProduto;
     for (let i = 0; i < this.items.length; i++) {
@@ -98,6 +99,7 @@ export class CarrinhoComponent implements OnInit {
           item.quantidade=new Number(quantidade--)
         }
       })
+      this.calcularValorTotal();
     }else{
       this.Excluir(id)
     }
@@ -123,9 +125,10 @@ export class CarrinhoComponent implements OnInit {
       console.log(limiteSuperior)
       this.items?.forEach(item=>{
         if(item.id===itemE.id){
-          item.quantidade=new Number(quantidade++)
+          item.quantidade=new Number(quantidade++);
         }
       })
+      this.calcularValorTotal();
     }
   }
 }
