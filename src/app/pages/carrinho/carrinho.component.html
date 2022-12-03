@@ -1,4 +1,5 @@
 <div class="container-total">
+  <div *ngIf="items.length>0">
   <h1>MEU CARRINHO</h1>
   <select *ngIf="items.length>0" id="required" class="form-control form-control-chosen-required" [(ngModel)]="cliente"
     data-placeholder="CPF - Nome do cliente">
@@ -10,7 +11,7 @@
   <div class="resu" *ngIf="items.length>0"><h3>Resumo do pedido
   </h3>
   </div>
-  <table *ngIf="items.length>0" class="table table-hover">
+  <table class="table table-hover">
     
     <thead>
       <tr>
@@ -47,6 +48,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
   <div class="para" *ngIf="items.length==0">
     <h3 class="para1">O Carrinho está vazio</h3>
   </div>
