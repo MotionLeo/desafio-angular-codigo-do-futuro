@@ -12,12 +12,12 @@ import { LoginGuard } from '../servicos/login.guard';
 import { ListaPedidosComponent } from '../pages/lista-pedidos/lista-pedidos.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'home', component: HomeComponent},
+  {path: '', component: HomeComponent, canActivate:[LoginGuard]},
+  {path: 'home', component: HomeComponent, canActivate:[LoginGuard]},
   {path: 'lista-completa', component:ListaPedidosComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'produtos', component: ProdutosComponent},
-  {path: 'form-produto', component: FormProdutosComponent},
+  {path: 'produtos', component: ProdutosComponent, canActivate:[LoginGuard]},
+  {path: 'form-produto', component: FormProdutosComponent, canActivate:[LoginGuard]},
   {path: 'form-produto/:id', children: [
     {path: '', redirectTo: 'alterar', pathMatch: 'full'},
     {path: 'alterar', component: FormProdutosComponent}
