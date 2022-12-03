@@ -79,7 +79,57 @@ export class CarrinhoComponent implements OnInit {
   calcularValorTotal() {
     this.valor_total=Carrinho.getValor_Total();
   }
-
+  
+  async Subtrair(id:number){
+    let itemE:PedidoProduto={} as PedidoProduto;
+    for (let i = 0; i < this.items.length; i++) {
+      if(i==id){
+        itemE = this.items[i];
+      }
+    }
+    let qtd=itemE.quantidade;
+    let quantidade=0;
+    if(qtd){
+      quantidade=Number(qtd);
+    }
+    if((quantidade--)>1){
+      this.items?.forEach(item=>{
+        if(item.id===itemE.id){
+          item.quantidade=new Number(quantidade--)
+        }
+      })
+      this.calcularValorTotal();
+    }else{
+      this.Excluir(id)
+    }
+  }
+  async Adicionar(id:number){
+    let itemE:PedidoProduto={} as PedidoProduto;
+    for (let i = 0; i < this.items.length; i++) {
+      if(i==id){
+        itemE = this.items[i];
+      }
+    }
+    let limiteSuperior=0;
+    let limite= (await new ProdutoServico(this.http).buscaPorId(itemE.produto_id))?.qtd_estoque
+    if(limite){
+      limiteSuperior=Number(limite);
+    }
+    let qtd=itemE.quantidade;
+    let quantidade=0;
+    if(qtd){
+      quantidade=Number(qtd);
+    }
+    if(limiteSuperior>quantidade++){
+      console.log(limiteSuperior)
+      this.items?.forEach(item=>{
+        if(item.id===itemE.id){
+          item.quantidade=new Number(quantidade++);
+        }
+      })
+      this.calcularValorTotal();
+    }
+  }
 }
 
 
