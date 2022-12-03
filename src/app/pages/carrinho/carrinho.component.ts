@@ -23,7 +23,7 @@ export class CarrinhoComponent implements OnInit {
   public pedidoProdutoServico:PedidoProdutoServico= {} as PedidoProdutoServico;
   public clienteServico:ClienteServico= {} as ClienteServico;
   public valor_total:Number=0;
-  public cliente: String="";
+  public cliente: String | undefined="";
 
   constructor(
     private http:HttpClient,
@@ -56,7 +56,7 @@ export class CarrinhoComponent implements OnInit {
   }
 
   public salvar() {
-    Carrinho.setCliente_Id(new Number(this.cliente.split("-")[0].split(" ")[0]));
+    Carrinho.setCliente_Id(new Number(this.cliente?.split("-")[0].split(" ")[0]));
     Carrinho.salvar(this.http);
     Carrinho.reset();
   }
@@ -68,6 +68,7 @@ export class CarrinhoComponent implements OnInit {
 
   Excluir(id:number){
     Carrinho.excluirProduto(id);
+    this.carrinhoObserverService.updateQuantidade();
     this.calcularValorTotal();
   }
 
