@@ -3,6 +3,7 @@ import { PedidoServico } from "./pedidoServico";
 import { PedidoProduto } from "../models/pedidoProduto";
 import { HttpClient } from "@angular/common/http";
 import { Pedido } from "../models/pedido";
+import { Produto } from "../models/produto";
 
 export class Carrinho{
 
@@ -27,9 +28,13 @@ export class Carrinho{
         Carrinho.pedido.cliente_id=cliente_id;
     }
 
-    public static adicionaPedidoProduto(pedidoProduto:PedidoProduto):void{
+    public static adicionaPedidoProduto(produto:Produto):void{
+        let pedidoProduto={} as PedidoProduto;
         Carrinho.id++;
+        pedidoProduto.quantidade=1
         pedidoProduto.id=Carrinho.id;
+        pedidoProduto.produto_id=produto.id;
+        pedidoProduto.valor=produto.valor;
         Carrinho.carrinho.push(pedidoProduto);
      }
 

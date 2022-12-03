@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { Cliente } from 'src/app/models/cliente';
 import { PedidoProduto } from 'src/app/models/pedidoProduto';
 import { Carrinho } from 'src/app/servicos/carrinho';
-import { CarrinhoObserverService } from 'src/app/servicos/carrinho-observer.service';
 import { ClienteServico } from 'src/app/servicos/clienteServico';
 import { PedidoProdutoServico } from 'src/app/servicos/pedidoProdutoServico';
 import { ProdutoServico } from 'src/app/servicos/produtoServico';
@@ -28,7 +27,6 @@ export class CarrinhoComponent implements OnInit {
   constructor(
     private http:HttpClient,
     private router:Router,
-    private carrinhoObserverService: CarrinhoObserverService,
   ) { }
   
   ngOnInit(): void {
@@ -68,7 +66,6 @@ export class CarrinhoComponent implements OnInit {
 
   Excluir(id:number){
     Carrinho.excluirProduto(id);
-    this.carrinhoObserverService.updateQuantidade();
     this.calcularValorTotal();
   }
 
