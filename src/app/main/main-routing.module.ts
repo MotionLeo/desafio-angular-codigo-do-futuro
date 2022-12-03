@@ -9,13 +9,15 @@ import { ListaClienteComponent } from '../pages/lista-cliente/lista-cliente.comp
 import { LoginComponent } from '../pages/login/login.component';
 import { NotFoundComponent } from '../pages/navegacao/not-found/not-found.component';
 import { LoginGuard } from '../servicos/login.guard';
+import { ListaPedidosCompletaComponent } from '../pages/lista-pedidos-completa/lista-pedidos-completa.component';
 import { ListaPedidosComponent } from '../pages/lista-pedidos/lista-pedidos.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
-  {path: 'lista-completa', component:ListaPedidosComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'pedidos', component:ListaPedidosComponent},
+  {path: 'lista-completa', component:ListaPedidosCompletaComponent},
   {path: 'produtos', component: ProdutosComponent},
   {path: 'form-produto', component: FormProdutosComponent},
   {path: 'form-produto/:id', children: [

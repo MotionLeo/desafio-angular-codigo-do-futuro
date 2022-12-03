@@ -6,10 +6,10 @@ import { PedidoServico } from 'src/app/servicos/pedidoServico';
 
 @Component({
   selector: 'app-lista-pedidos',
-  templateUrl: './lista-pedidos.component.html',
-  styleUrls: ['./lista-pedidos.component.css']
+  templateUrl: './lista-pedidos-completa.component.html',
+  styleUrls: ['./lista-pedidos-completa.component.css']
 })
-export class ListaPedidosComponent implements OnInit {
+export class ListaPedidosCompletaComponent implements OnInit {
 
   constructor(
     private router: Router,
@@ -27,7 +27,6 @@ export class ListaPedidosComponent implements OnInit {
 
   private async listaDePedidos(){
     this.pedidos = await this.pedidosServico.lista();
-    this.pedidos = this.pedidos?.reverse();
   }
   number (a : Number){
     return Number(a)
@@ -35,9 +34,10 @@ export class ListaPedidosComponent implements OnInit {
 
   somaTotal(){
     let valorTotal = 0;
-    this.pedidos?.slice(0, 5).forEach(index => {
+    this.pedidos?.forEach(index => {
       valorTotal += Number(index.valor_total);
     })
     return Number(valorTotal)
   }
+
 }

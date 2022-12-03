@@ -1,0 +1,35 @@
+<section class="page-section" id="contact" style="margin-top: 100px;">
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-8 col-xl-7">
+            <div *ngIf="pedidos && pedidos.length == 0" class="alert alert-primary" role="alert">
+                Não existem pedidos cadastrados
+            </div>
+            <table *ngIf="pedidos && pedidos.length > 0" class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">ID do pedido</th>
+                    <th scope="col">ID do cliente</th>
+                    <th scope="col">Valor total</th>
+                    <th scope="col">Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pedido of pedidos">
+                    <th scope="row">{{pedido.id}}</th>
+                    <td>{{pedido.cliente_id}}</td>
+                    <td>{{number(pedido.valor_total) | currency}}</td>
+                    <td>{{pedido.data}}</td>
+                    <tr>
+                        <th scope = "row">Soma Total</th>
+                        <td></td>
+                        <td>{{somaTotal() | currency}}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+</section>
