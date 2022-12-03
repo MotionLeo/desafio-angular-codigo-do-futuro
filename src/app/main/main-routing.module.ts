@@ -11,6 +11,7 @@ import { NotFoundComponent } from '../pages/navegacao/not-found/not-found.compon
 import { LoginGuard } from '../servicos/login.guard';
 import { ListaPedidosCompletaComponent } from '../pages/lista-pedidos-completa/lista-pedidos-completa.component';
 import { ListaPedidosComponent } from '../pages/lista-pedidos/lista-pedidos.component';
+import { FormComprarProdutoComponent } from '../pages/form-comprar-produto/form-comprar-produto.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,6 +20,10 @@ const routes: Routes = [
   {path: 'pedidos', component:ListaPedidosComponent},
   {path: 'lista-completa', component:ListaPedidosCompletaComponent},
   {path: 'produtos', component: ProdutosComponent},
+  {path: 'produtos/:id', component: FormComprarProdutoComponent, children:[
+    {path: '', redirectTo:'comprar', pathMatch: "full"},
+    {path: 'comprar', component: FormComprarProdutoComponent}
+  ]},
   {path: 'form-produto', component: FormProdutosComponent},
   {path: 'form-produto/:id', children: [
     {path: '', redirectTo: 'alterar', pathMatch: 'full'},

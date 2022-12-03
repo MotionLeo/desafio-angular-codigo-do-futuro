@@ -26,7 +26,7 @@
       <tr *ngFor="let item of items;let i = index">
         <th scope="row">{{item.id}}</th>
         <td>{{nomes.at(i)}}</td>
-        <td>{{item.valor}}</td>
+        <td>{{number(item.valor) | currency}}</td>
         <td>
           <button id="adicionar" type="button" class="btn btn-primary" style="margin-right: 10px;"
             (click)="Adicionar(i)">+</button>
@@ -34,7 +34,7 @@
           <button id="retirar" type="button" class="btn btn-danger" style="margin-left: 10px;"
             (click)="Subtrair(i)">-</button>
         </td>
-        <td>{{multiplicacao(item.quantidade,item.valor)}}</td>
+        <td>{{multiplicacao(item.quantidade,item.valor) | currency}}</td>
       </tr>
       <tr>
         <th scope="row"></th>
@@ -42,7 +42,7 @@
         <td></td>
         <td></td>
         <td>
-          <p>{{valor_total}}</p><button id="proximo" type="submit" class="btn btn-primary"
+          <p>{{number(valor_total) | currency}}</p><button id="proximo" type="submit" class="btn btn-primary"
             (click)="salvar()">Comprar</button>
         </td>
       </tr>
