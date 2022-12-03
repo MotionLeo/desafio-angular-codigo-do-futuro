@@ -35,4 +35,9 @@ export class ProdutoServico{
     public excluirPorId(id:Number) {
         firstValueFrom(this.http.delete(`${environment.api}/produtos/${id}`))
     }
+
+    public async listaByCategoria(id:Number){
+        let produtos:Produto[] | undefined = await firstValueFrom(this.http.get<Produto[]>(`${environment.api}categorias/produtos/${id}`))
+        return produtos;
+    }
 }

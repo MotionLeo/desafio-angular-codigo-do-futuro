@@ -3,7 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Produto } from 'src/app/models/produto';
 import { ProdutoServico } from 'src/app/servicos/produtoServico';
-
+import { CategoriaServico } from 'src/app/servicos/categoriaServico';
+import { Carrinho } from 'src/app/servicos/carrinho';
 @Component({
   selector: 'app-produtos',
   templateUrl: './produtos.component.html',
@@ -18,6 +19,7 @@ export class ProdutosComponent implements OnInit {
 
   private produtoServico: ProdutoServico = {} as ProdutoServico
   public produtos: Produto[] | undefined = [];
+  public nomesCategorias: String[] =[]
 
   ngOnInit(): void {
     this.produtoServico = new ProdutoServico(this.http);
@@ -29,7 +31,14 @@ export class ProdutosComponent implements OnInit {
   }
 
   private async listaDeProdutos(){
-    this.produtos = await this.produtoServico.lista();
+    let produtos = await this.produtoServico.lista();
+    let i=0;
+    let categorias=await new CategoriaServico(this.http).lista();
+    categorias?.forEach(categoria=>{
+      this.nomesCategorias.push(categoria.nome);
+    })
+    console.log(this.nomesCategorias);
+    this.produtos=produtos;
   }
 
   async excluir(produto:Produto){
@@ -37,6 +46,10 @@ export class ProdutosComponent implements OnInit {
       await this.produtoServico.excluirPorId(produto.id)
       this.produtos = await this.produtoServico.lista()
     }
+  }
+
+  public comprar(produto:Produto){
+    Carrinho.adicionaPedidoProduto(produto);
   }
 
   number(a : Number){

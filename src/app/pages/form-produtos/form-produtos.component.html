@@ -7,6 +7,14 @@
                     <input type="text" class="form-control" id="nome-produto" name="nome-produto" [(ngModel)] = "produto.nome" placeholder="Insira o nome do produto">
                 </div>
                 <div class="form-group">
+                    <label for="exampleInputEmail1" style="padding: 10px;">Categoria</label>
+                    <select name="teste" id="required" class="form-control form-control-chosen-required" [(ngModel)] = "categoriaSelecionado" data-placeholder="CPF - Nome do cliente" >
+                        <option></option>
+                        <option *ngFor="let categoria of categorias; index as i" id="{{categoria.id}}" [selected]="selecionado[i]">
+                            {{(i+1)+"- "+categoria.nome}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="exampleInputEmail1" style="padding: 10px;">Descrição</label>
                     <input type="text" class="form-control" id="descricao-produto" name="descricao-produto" [(ngModel)] = "produto.descricao" placeholder="Insira a descrição">
                 </div>
@@ -16,9 +24,12 @@
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1" style="padding: 10px;">Quantidade</label>
-                    <input type="text" class="form-control" id="quantidade-produto" name="quantidade-produto" [(ngModel)] = "produto.qtd_estoque" placeholder="Insira a quantidade">
+                    <input type="text" class="form-control" id="quantidade-produ" name="quantidade-produ" [(ngModel)] = "produto.qtd_estoque" placeholder="Insira a quantidade">
                 </div>
-
+                <div class="form-group">
+                    <label for="exampleInputEmail1" style="padding: 10px;">Custo</label>
+                    <input type="text" class="form-control" id="quantidade-produto" name="quantidade-produto" [(ngModel)] = "produto.custo" placeholder="Insira a quantidade">
+                </div>
                 <button class="btn btn-primary btn-xl m-3" id="submitButton" (click)="registrar()" type="button">{{tituloDoBotao}}</button>
             </form>
         </div>

@@ -1,7 +1,18 @@
-<select *ngIf="items.length>0" id="required" class="form-control form-control-chosen-required" [(ngModel)]="cliente" data-placeholder="CPF - Nome do cliente" >
-  <option *ngFor="let cliente of clientes;" id="{{cliente.id}}"><div id>{{cliente.id+" - "+cliente.nome}}</div></option>
-</select>
-<table *ngIf="items.length>0" class="table table-dark">
+<div class="container-total">
+  <div *ngIf="items.length>0">
+  <h1>MEU CARRINHO</h1>
+  <select *ngIf="items.length>0" id="required" class="form-control form-control-chosen-required" [(ngModel)]="cliente"
+    data-placeholder="CPF - Nome do cliente">
+    <option *ngFor="let cliente of clientes;" id="{{cliente.id}}">
+      <div id>{{cliente.id+" - "+cliente.nome}}</div>
+    </option>
+  </select>
+  
+  <div class="resu"><h1>Resumo do pedido
+  </h1>
+  </div>
+  <table class="table table-hover">
+    
     <thead>
       <tr>
         <th scope="col">Id</th>
@@ -12,26 +23,33 @@
       </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of items;let i = index">
-        <th scope="row" >{{item.id}}</th>
+      <tr *ngFor="let item of items;let i = index">
+        <th scope="row">{{item.id}}</th>
         <td>{{nomes.at(i)}}</td>
         <td>{{item.valor}}</td>
         <td>
-          <button id="adicionar" type="button" class="btn btn-primary" style="margin-right: 10px;" (click)="Adicionar(i)">+</button>
+          <button id="adicionar" type="button" class="btn btn-primary" style="margin-right: 10px;"
+            (click)="Adicionar(i)">+</button>
           {{item.quantidade}}
-          <button id="retirar" type="button" class="btn btn-danger" style="margin-left: 10px;" (click)="Subtrair(i)">-</button>
+          <button id="retirar" type="button" class="btn btn-danger" style="margin-left: 10px;"
+            (click)="Subtrair(i)">-</button>
         </td>
         <td>{{multiplicacao(item.quantidade,item.valor)}}</td>
-    </tr>
-    <tr>
-      <th scope="row" ></th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td><p>{{valor_total}}</p><button id="proximo" type="submit" class="btn btn-primary" (click)="salvar()">Comprar</button></td>
-  </tr>
+      </tr>
+      <tr>
+        <th scope="row"></th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+          <p>{{valor_total}}</p><button id="proximo" type="submit" class="btn btn-primary"
+            (click)="salvar()">Comprar</button>
+        </td>
+      </tr>
     </tbody>
-</table>
-<div *ngIf="items.length==0">
-  <h1>O Carrinho está vazio</h1>
+  </table>
+  </div>
+  <div *ngIf="items.length==0">
+    <h1>O Carrinho está vazio</h1>
+  </div>
 </div>
