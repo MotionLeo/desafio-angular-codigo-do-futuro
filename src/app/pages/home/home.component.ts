@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pedido } from 'src/app/models/pedido';
 import { Categoria } from 'src/app/models/categoria';
@@ -14,7 +14,7 @@ import { PedidoProduto } from 'src/app/models/pedidoProduto';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnChanges {
 
   constructor(
     private router: Router,
@@ -41,8 +41,8 @@ export class HomeComponent implements OnInit {
 
   //Variáveis com dataBinding
   public categoriaSelecionado:String="";
-  public dataInicial:String="";
-  public dataFinal:String="";
+  public dataInicial:Date = new Date();
+  public dataFinal:Date = new Date();
   public valorTotal:String="";
 
   ngOnInit(): void {
@@ -53,7 +53,14 @@ export class HomeComponent implements OnInit {
     this.listaDeCategorias();
     this.listaDePedidosProdutos();
     this.getValor_Total();
+    console.log(this.dataInicial);
+    console.log(this.dataFinal);
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.filtraData();
+  }
+
 
   private async listaDeCategorias(){
     let categorias = await this.categoriaServico.lista();
@@ -91,5 +98,22 @@ export class HomeComponent implements OnInit {
 
   number (a : Number){
     return Number(a)
+  }
+
+  converteData(dataDDMMYY : String){
+    const dataSplit = dataDDMMYY.split ("/");
+    const novaData = new Date(parseInt(dataSplit[2], 10),
+      parseInt(dataSplit[1], 10) - 1,
+      parseInt(dataSplit[0], 10));
+    return novaData
+  }
+
+  filtraData(){
+    this.dataInicial = this.converteData(this.dataInicial.toString())
+    this.dataFinal = this.converteData(this.dataInicial.toString());
+    let datasFiltradas = this.pedidos.filter(result =>{
+      return this.converteData(result.data.toString()) >= this.dataInicial && this.converteData(result.data.toString()) <= this.dataFinal;
+    })
+    console.log(datasFiltradas);
   }
 }
