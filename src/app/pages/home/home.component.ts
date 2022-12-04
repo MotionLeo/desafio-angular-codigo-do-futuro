@@ -8,6 +8,7 @@ import { CategoriaServico } from 'src/app/servicos/categoriaServico';
 import { PedidoProdutoServico } from 'src/app/servicos/pedidoProdutoServico';
 import { ProdutoServico } from 'src/app/servicos/produtoServico';
 import { PedidoProduto } from 'src/app/models/pedidoProduto';
+import { Produto } from 'src/app/models/produto';
 
 @Component({
   selector: 'app-home',
@@ -28,31 +29,36 @@ export class HomeComponent implements OnInit {
   public produtoServico: ProdutoServico = {} as ProdutoServico;
 
   //Arrays com dataBinding
-  public pedidosSelecionados: Pedido[] = [];
   public categoriasMostradas: Categoria[]=[];
   
   //Arrays Filtrados
   public pedidosProdutosSelecionados:PedidoProduto[]=[]
+  public produtosSelecionados: Produto[] = [];
+  public pedidosSelecionados: Pedido[] = [];
   
   //Arrays com todos os valores
   private categorias: Categoria[]=[]
   private pedidos: Pedido[]=[]
   private pedidosProdutos: PedidoProduto[]=[]
+  private produtos: Produto[]=[]
 
   //Variáveis com dataBinding
   public categoriaSelecionado:String="";
   public dataInicial:String="";
   public dataFinal:String="";
   public valorTotal:String="";
+  public valorPositivo:String="";
+  public valorNegativo:String="";
 
   ngOnInit(): void {
     this.pedidoServico = new PedidoServico(this.http);
     this.categoriaServico = new CategoriaServico(this.http);
     this.pedidoProdutoServico = new PedidoProdutoServico(this.http);
+    this.produtoServico = new ProdutoServico(this.http);
     this.listaDePedidos();
     this.listaDeCategorias();
     this.listaDePedidosProdutos();
-    this.getValor_Total();
+    this.listaDeProdutos();
   }
 
   private async listaDeCategorias(){
@@ -63,14 +69,22 @@ export class HomeComponent implements OnInit {
     this.categoriasMostradas=this.categorias;
   }
 
+  private async listaDeProdutos(){
+    let produtos = await this.produtoServico.lista();
+    produtos?.forEach(produto=>{
+      this.produtos.push(produto);
+    })
+    this.produtosSelecionados=this.produtos;
+  }
+
   private async listaDePedidosProdutos(){
     let pedidosProdutos = await this.pedidoProdutoServico.lista();
     pedidosProdutos?.forEach(pedidoProduto=>{
       this.pedidosProdutos.push(pedidoProduto);
     })
-    console.log(this.pedidosProdutosSelecionados)
     this.pedidosProdutosSelecionados=this.pedidosProdutos
-    //this.pedidosMostrados = this.pedidos?.reverse();
+    console.log(this.pedidosProdutosSelecionados)
+    this.getValor_Total();
   }
 
   private async listaDePedidos(){
@@ -82,11 +96,60 @@ export class HomeComponent implements OnInit {
   }
 
   private getValor_Total(){
-    let total=0;
+    let total=0,positivo=0,negativo=0;
     this.pedidosProdutosSelecionados.forEach(pedidoProduto=>{
+      let val1=total;
       total+=Number(pedidoProduto.valor)*Number(pedidoProduto.quantidade);
+      if(val1>total){
+        negativo+=val1-total
+      }else{
+        positivo+=total-val1
+      }
     })
     this.valorTotal=total.toString();
+    this.valorPositivo=positivo.toString();
+    this.valorNegativo=negativo.toString();
+  }
+
+  async atualizar(){
+    if(!this.verificaData()) return;
+    this.pedidosSelecionados=this.pedidos;
+    this.pedidosProdutosSelecionados=this.pedidosProdutos;
+    this.produtosSelecionados=this.produtos;
+    let categoria=new Number(this.categoriaSelecionado.split("-")[0])
+    if(!(categoria.toString()==="0")){
+      this.filtrar(categoria);
+    }
+    this.getValor_Total();
+  }
+
+  filtrar(categoria_id:Number){
+    this.produtosSelecionados=this.produtosSelecionados.filter(produto=>{
+      return produto.categoria_id.toString()===categoria_id.toString();
+    })
+    this.pedidosProdutosSelecionados=this.pedidosProdutosSelecionados.filter(pedidoProduto=>{
+      let val=pedidoProduto.produto_id
+      for (let i = 0; i < this.produtosSelecionados.length; i++) {
+        const produto = this.produtosSelecionados[i];
+        if(val?.toString()===produto.id.toString()){
+          return true
+        }
+      }
+      return false;
+    })
+    this.pedidosSelecionados=this.pedidosSelecionados.filter(pedido=>{
+      for (let i = 0; i < this.pedidosProdutosSelecionados.length; i++) {
+        const pedidoProduto = this.pedidosProdutosSelecionados[i];
+        if(pedido.id.toString()===pedidoProduto.pedido_id.toString()){
+          return true
+        }
+      }
+      return false;
+    })
+  }
+
+  verificaData():boolean{
+    return true
   }
 
   number (a : Number){
