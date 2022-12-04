@@ -6,6 +6,7 @@ import { firstValueFrom } from 'rxjs';
 
 export class PedidoServico{
 
+    private static pedido = PedidoServico
     constructor(private http:HttpClient) { }
 
     public async lista(): Promise<Pedido[] | undefined> {

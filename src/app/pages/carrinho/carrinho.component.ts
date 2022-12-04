@@ -127,6 +127,9 @@ export class CarrinhoComponent implements OnInit {
       this.calcularValorTotal();
     }
   }
+  number (a : Number){
+    return Number(a)
+  }
 }
 
 

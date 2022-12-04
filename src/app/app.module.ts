@@ -21,7 +21,9 @@ import { LoginGuard } from './servicos/login.guard';
 import { NotFoundComponent } from './pages/navegacao/not-found/not-found.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CarrinhoNotificacaoComponent } from './pages/carrinho-notificacao/carrinho-notificacao.component';
+import { ListaPedidosCompletaComponent } from './pages/lista-pedidos-completa/lista-pedidos-completa.component';
 import { ListaPedidosComponent } from './pages/lista-pedidos/lista-pedidos.component';
+import { FormComprarProdutoComponent } from './pages/form-comprar-produto/form-comprar-produto.component';
 
 registerLocaleData(ptBr);
 
@@ -42,7 +44,9 @@ registerLocaleData(ptBr);
     NotFoundComponent,
     HomeComponent,
     CarrinhoNotificacaoComponent,
+    ListaPedidosCompletaComponent,
     ListaPedidosComponent,
+    FormComprarProdutoComponent,
   ],
   imports: [
     BrowserModule,

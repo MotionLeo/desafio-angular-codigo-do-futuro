@@ -30,11 +30,11 @@
                       <td>{{produto.descricao}}</td>
                       <td>{{number(produto.valor) | currency}}</td>
                       <td>{{produto.qtd_estoque}}</td>
-                      <td>{{produto.custo}}</td>
+                      <td>{{number(produto.custo) | currency}}</td>
                       <td><a class="btn btn-warning" routerLink="/form-produto/{{produto.id}}">Alterar</a></td>
                       <td><button class="btn btn-danger" (click)="excluir(produto)">Excluir</button></td>
                       <td><button class="btn btn-success" (click)="comprar(produto)">Vender</button></td>
-                      <td><button class="btn btn-primary" (click)="comprar(produto)">Comprar</button></td>
+                      <td><button class="btn btn-primary" routerLink="/produtos/{{produto.id}}">Comprar</button></td>
                       <!-- <td><button class="btn btn-danger" [disabled]="!logadoService.adm" (click)="excluir(cliente)">Excluir</button></td> -->
                     </tr>
                   </tbody>
