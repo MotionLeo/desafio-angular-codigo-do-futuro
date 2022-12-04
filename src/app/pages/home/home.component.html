@@ -2,9 +2,9 @@
     <div class="container">
         <div>
             <div class="modelo">
-                <input type="date" id="dataI" name="dataI" [(ngModel)]="dataInicial">
+                <input type="date" onkeydown="return false" id="dataI" name="dataI" [(ngModel)]="dataInicial" (input)="dataInicial" (change) = "filtraData()">
                 <label for="labelFiltro" style="display: block;">Data Inicio</label>
-                <input type="date" id="dataF" name="dataF" [(ngModel)]="dataFinal">
+                <input type="date" onkeydown="return false" id="dataF" name="dataF" [(ngModel)]="dataFinal" (change) = "filtraData()">
                 <label for="labelFiltro" style="display: block;">Data Final</label>
                 <label for="labelFiltro" style="display: block;">Produtos</label>
                 <select name="teste" id="required" class="form-control form-control-chosen-required" (change)="atualizar()" [(ngModel)] = "categoriaSelecionado" data-placeholder="CPF - Nome do cliente" >

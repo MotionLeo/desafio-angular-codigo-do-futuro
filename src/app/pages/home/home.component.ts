@@ -44,8 +44,8 @@ export class HomeComponent implements OnInit, OnChanges {
 
   //Variáveis com dataBinding
   public categoriaSelecionado:String="";
-  public dataInicial:Date = new Date();
-  public dataFinal:Date = new Date();
+  public dataInicial:String = String(new Date(Date.now()));
+  public dataFinal:String = String(new Date(Date.now()));
   public valorTotal:String="";
   public valorPositivo:String="";
   public valorNegativo:String="";
@@ -129,6 +129,7 @@ export class HomeComponent implements OnInit, OnChanges {
   }
 
   filtrar(categoria_id:Number){
+    this.filtraData();
     this.produtosSelecionados=this.produtosSelecionados.filter(produto=>{
       return produto.categoria_id.toString()===categoria_id.toString();
     })
@@ -161,20 +162,12 @@ export class HomeComponent implements OnInit, OnChanges {
     return Number(a)
   }
 
-  converteData(dataDDMMYY : String){
-    const dataSplit = dataDDMMYY.split ("/");
-    const novaData = new Date(parseInt(dataSplit[2], 10),
-      parseInt(dataSplit[1], 10) - 1,
-      parseInt(dataSplit[0], 10));
-    return novaData
-  }
-
   filtraData(){
-    this.dataInicial = this.converteData(this.dataInicial.toString())
-    this.dataFinal = this.converteData(this.dataInicial.toString());
     let datasFiltradas = this.pedidos.filter(result =>{
-      return this.converteData(result.data.toString()) >= this.dataInicial && this.converteData(result.data.toString()) <= this.dataFinal;
+      return new Date(String(this.dataInicial)) < new Date(result.data.toString()) && new Date(String(this.dataFinal)) > new Date(result.data.toString())
     })
+    console.log(this.dataInicial);
+    console.log(this.dataFinal);
     console.log(datasFiltradas);
   }
 }
