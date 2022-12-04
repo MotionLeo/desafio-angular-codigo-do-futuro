@@ -28,7 +28,16 @@
         </div>
         <hr>
         <div>
-            Gráfico aqui
+            <google-chart
+            [title]="titleColum"
+            [type]="columChart"
+            [data]="dataColum"
+            [columns]="columnsNames"
+            [width]="widthColum"
+            [height]="heightColum"
+            [options]="optionsColum"
+            >
+            </google-chart>
         </div>
         <hr>
         <!--<div class="row ">
