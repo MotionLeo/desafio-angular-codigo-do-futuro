@@ -53,9 +53,9 @@ export class CarrinhoComponent implements OnInit {
     });
   }
 
-  public salvar() {
+  public async salvar() {
     Carrinho.setCliente_Id(new Number(this.cliente?.split("-")[0].split(" ")[0]));
-    Carrinho.salvar(this.http);
+    await Carrinho.salvar(this.http);
     Carrinho.reset();
   }
 

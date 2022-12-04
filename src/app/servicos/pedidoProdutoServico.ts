@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { PedidoProduto } from "../models/pedidoProduto";
 
 import { firstValueFrom } from 'rxjs';
+import { ProdutoServico } from './produtoServico';
 
 export class PedidoProdutoServico{
 
@@ -14,8 +15,17 @@ export class PedidoProdutoServico{
     }
 
     public async criar(pedidoProduto:PedidoProduto): Promise<PedidoProduto | undefined> {
-        console.log(`${environment.api}/pedidosProdutos/`, pedidoProduto)
+        console.log("o")
         let pedidoProdutoRest:PedidoProduto | undefined = await firstValueFrom(this.http.post<PedidoProduto>(`${environment.api}/pedidosProdutos/`, pedidoProduto))
+        let produto = await new ProdutoServico(this.http).buscaPorId(pedidoProduto.produto_id);
+        let qtd=pedidoProduto.quantidade
+        if(pedidoProduto.valor>0){
+            qtd =new Number(Number(qtd)*-1)
+        }
+        console.log(produto)
+        if(produto?.qtd_estoque) produto.qtd_estoque=new Number(Number(produto?.qtd_estoque)+Number(qtd))
+        
+        if(produto) await new ProdutoServico(this.http).update(produto)
         return pedidoProdutoRest;
     }
 

@@ -56,6 +56,7 @@ export class Carrinho{
         let id =new Number(Number((await new PedidoServico(http).getLast())?.id)+1);
         !id? 0:Carrinho.pedido.id=id;
 
+        console.log(`"asd"/`)
         Carrinho.carrinho.forEach(async item=>{
             item.id=new Number(Carrinho.pedido?.id.toString()+item.id)
             console.log("teste "+item.id)
