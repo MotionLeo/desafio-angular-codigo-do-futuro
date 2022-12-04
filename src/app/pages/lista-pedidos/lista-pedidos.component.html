@@ -40,7 +40,7 @@
                     <th scope="row">{{pedido.id}}</th>
                     <td>{{pedido.cliente_id}}</td>
                     <td>{{number(pedido.valor_total) | currency}}</td>
-                    <td>{{pedido.data}}</td>
+                    <td>{{pedido.data | date: 'dd/MM/yyyy HH:mm'}}</td>
                     </tr>
                     <tr>
                         <th scope = "row">Soma total</th>

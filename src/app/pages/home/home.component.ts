@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pedido } from 'src/app/models/pedido';
 import { Categoria } from 'src/app/models/categoria';
@@ -17,7 +17,7 @@ import { GoogleChartComponent } from 'angular-google-charts';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnChanges {
 
   constructor(
     private router: Router,
@@ -49,8 +49,8 @@ export class HomeComponent implements OnInit {
 
   //Variáveis com dataBinding
   public categoriaSelecionado:String="";
-  public dataInicial:String="11/22/2022";
-  public dataFinal:String="12/22/2022";
+  public dataInicial:String = String(new Date(Date.now()));
+  public dataFinal:String = String(new Date(Date.now()));
   public valorTotal:String="";
   public valorPositivo:String="";
   public valorNegativo:String="";
@@ -83,6 +83,11 @@ export class HomeComponent implements OnInit {
     this.listaDePedidosProdutos();
     this.listaDeProdutos();
   }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.filtraData();
+  }
+
 
   private async listaDeCategorias(){
     let categorias = await this.categoriaServico.lista();
@@ -209,6 +214,7 @@ export class HomeComponent implements OnInit {
   }
 
   filtrar(categoria_id:Number){
+    this.filtraData();
     let dictProdutoSelecionado:Map<Number,boolean>=new Map();
     this.produtosSelecionados=this.produtosSelecionados.filter(produto=>{
       if(produto.categoria_id.toString()===categoria_id.toString()){
@@ -241,5 +247,14 @@ export class HomeComponent implements OnInit {
 
   number (a : Number){
     return Number(a)
+  }
+
+  filtraData(){
+    let datasFiltradas = this.pedidos.filter(result =>{
+      return new Date(String(this.dataInicial)) < new Date(result.data.toString()) && new Date(String(this.dataFinal)) > new Date(result.data.toString())
+    })
+    console.log(this.dataInicial);
+    console.log(this.dataFinal);
+    console.log(datasFiltradas);
   }
 }
