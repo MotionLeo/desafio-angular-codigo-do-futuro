@@ -10,3 +10,42 @@
     color: rgb(23, 23, 209);
     transition: 0.5s;
 }
+.charts{
+    display:flex;
+}
+.filtrosChart{
+    display:flex;
+}
+.modelo1{
+    display:flex;
+    width: 100%;
+    align-items: center;
+}
+input{
+    padding-left: 10px;
+    border-radius: 15px;
+    border-style: groove;
+    border-width: 2px;
+}
+label{
+    padding-left: 10px;
+    padding-right: 5px;
+}
+.form-control{
+    width: 160px;
+    border-radius: 15px;
+    border-style: groove;
+    border-width: 2px;
+}
+.modelo{
+    padding-right: 90px;
+}
+.container{
+    border-style: groove;
+    padding-top: 20px;
+    border-radius: 35px;
+    border-width: 1px;
+}
+.page-section{
+    padding-bottom: 25px;
+}
