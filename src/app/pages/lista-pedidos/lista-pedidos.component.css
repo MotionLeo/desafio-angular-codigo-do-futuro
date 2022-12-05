@@ -10,3 +10,12 @@
     color: rgb(23, 35, 209);
     transition: 0.5s;
 }
+
+.container{
+    width: 100%;
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    font-size: 12px;
+}

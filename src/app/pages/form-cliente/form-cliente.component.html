@@ -1,17 +1,17 @@
 <section class="page-section" id="contact" style="margin-top: 5px;">
     <div class="container">
         <div class="col-lg-8 col-xl-7">
-            <form class="form" *ngIf="cliente">
+            <form class="form" *ngIf="cliente" autocomplete="off">
                 <div class="coluna1">
                     <div class="form-group">
                         <label for="exampleInputEmail1" style="padding: 10px;">Nome</label>
                         <input type="text" class="form-control" id="nome-cliente" name="nome-cliente"
-                            [(ngModel)]="cliente.nome" placeholder="Insira seu nome">
+                            [(ngModel)]="cliente.nome" placeholder="Insira seu nome" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail1" style="padding: 10px;">Telefone</label>
                         <input type="text" class="form-control" id="telefone-cliente" name="telefone-cliente"
-                            [(ngModel)]="cliente.telefone" placeholder="Insira seu telefone">
+                            [(ngModel)]="cliente.telefone" placeholder="Insira seu telefone" autocomplete="off">
                     </div>
 
 

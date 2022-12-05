@@ -1,7 +1,7 @@
 <section class="page-section" id="contact" style="margin-top: 10px;">
     <div class="container">
-        <div class="col-lg-8 col-xl-7">
-            <form class="form" *ngIf="produto">
+        <div class="col-lg-8 col-xl-7" style="width: 100%; max-width: 960px">
+            <form class="form" *ngIf="produto" autocomplete="off">
                 <div class="form-group">
                     <label for="exampleInputEmail1" style="padding: 10px;">Nome</label>
                     <input type="text" class="form-control" id="nome-produto" name="nome-produto" [(ngModel)] = "produto.nome" placeholder="Insira o nome do produto">

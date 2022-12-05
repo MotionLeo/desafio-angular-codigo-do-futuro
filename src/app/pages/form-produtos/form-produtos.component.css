@@ -1,0 +1,33 @@
+.page-section{
+    display: grid;
+    justify-content: center;
+    margin-top: 5px;
+    padding-bottom: 50px;
+    padding-top: 50px;
+    margin-bottom: 5px;
+    margin-right: 6px;
+    margin-left: 6px;
+    box-sizing: border-box;
+}
+
+
+
+.form{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.form-group{
+    display: flex;
+    margin: 10px;
+    padding-top: 14px;
+}
+
+.container{
+    background: #f8f8f8;
+    border-radius: 10px;
+    text-align-last: left;
+}

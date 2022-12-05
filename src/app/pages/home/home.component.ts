@@ -410,6 +410,7 @@ export class HomeComponent implements OnInit, OnChanges {
     return Number(a)
   }
 
+
   filtraData():Map<Number,boolean>{
     let dictPedidoSelecionado:Map<Number,boolean>=new Map();
     this.pedidosSelecionados = this.pedidos.filter(result =>{
