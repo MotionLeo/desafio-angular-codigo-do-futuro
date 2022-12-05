@@ -25,7 +25,7 @@ const routes: Routes = [
     {path: '', redirectTo:'comprar', pathMatch: "full"},
     {path: 'comprar', component: FormComprarProdutoComponent}
   ]},
-  {path: 'form-produto', component: FormProdutosComponent, canDeactivate: [SairDoFormGuard]},
+  {path: 'form-produto', component: FormProdutosComponent},
   {path: 'form-produto/:id', children: [
     {path: '', redirectTo: 'alterar', pathMatch: 'full'},
     {path: 'alterar', component: FormProdutosComponent}
