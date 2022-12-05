@@ -9,15 +9,15 @@
                 <thead>
                     <tr>
                     <th scope="col">ID do pedido</th>
-                    <th scope="col">ID do cliente</th>
+                    <th scope="col">Nome do cliente</th>
                     <th scope="col">Valor total</th>
                     <th scope="col">Data</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let pedido of pedidos">
+                    <tr *ngFor="let pedido of pedidos; let i = index">
                     <th scope="row">{{pedido.id}}</th>
-                    <td>{{pedido.cliente_id}}</td>
+                    <td>{{nomeCliente.at(i)}}</td>
                     <td>{{number(pedido.valor_total) | currency}}</td>
                     <td>{{pedido.data | date: 'dd/MM/yyyy HH:mm'}}</td>
                     <tr>

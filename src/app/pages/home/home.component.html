@@ -2,7 +2,7 @@
     <div class="container">
         <div>
             <div class="modelo">
-                <input type="date" onkeydown="return false" id="dataI" name="dataI" [(ngModel)]="dataInicial" (input)="dataInicial" (change) = "filtraData()">
+                <input type="date" onkeydown="return false" id="dataI" name="dataI" [(ngModel)]="dataInicial" (change) = "filtraData()" [max] = "dataMaxima">
                 <label for="labelFiltro" style="display: block;">Data Inicio</label>
                 <input type="date" onkeydown="return false" id="dataF" name="dataF" [(ngModel)]="dataFinal" (change) = "filtraData()">
                 <label for="labelFiltro" style="display: block;">Data Final</label>

@@ -1,25 +1,5 @@
 <section class="page-section" id="contact" style="margin-top: 100px;">
     <div class="container">
-        <div>
-            <div class="modelo">
-                <input type="checkbox" id="data" name="data">
-                <label for="labelFiltro" style="display: block;">Data</label>
-                <input type="checkbox" id="produtos" name="produtos">
-                <label for="labelFiltro" style="display: block;">Produtos</label>
-            </div>
-            <div class="modelo">
-                <label for="labelTotal" style="display: block;">Total</label>
-                <label for="labelTotalView" style="display: block;">Total aqui</label>
-            </div>
-            <div class="modelo">
-                <label for="labelSoma" style="display: block;">Soma</label>
-                <label for="labelSomaView" style="display: block;">Soma aqui</label>
-            </div>
-            <div class="modelo">
-                <label for="labelSubtracao" style="display: block;">Subtração</label>
-                <label for="labelSubtracaoView" style="display: block;">Subtração aqui</label>
-            </div>
-        </div>
         <hr>
         <div class="row ">
             <div class="col-lg-8 col-xl-7">
@@ -30,15 +10,15 @@
                 <thead>
                     <tr>
                     <th scope="col">ID do pedido</th>
-                    <th scope="col">ID do cliente</th>
+                    <th scope="col">Nome do cliente</th>
                     <th scope="col">Valor total</th>
                     <th scope="col">Data</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let pedido of pedidos.slice(0, 5)">
+                    <tr *ngFor="let pedido of pedidos.slice(0, 5); let i = index">
                     <th scope="row">{{pedido.id}}</th>
-                    <td>{{pedido.cliente_id}}</td>
+                    <td>{{nomeCliente.at(i)}}</td>
                     <td>{{number(pedido.valor_total) | currency}}</td>
                     <td>{{pedido.data | date: 'dd/MM/yyyy HH:mm'}}</td>
                     </tr>

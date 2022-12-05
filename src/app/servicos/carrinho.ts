@@ -29,15 +29,31 @@ export class Carrinho{
     }
 
     public static adicionaPedidoProduto(produto:Produto):void{
-        let pedidoProduto={} as PedidoProduto;
-        Carrinho.id++;
-        pedidoProduto.quantidade=1
-        pedidoProduto.id=Carrinho.id;
-        pedidoProduto.produto_id=produto.id;
-        pedidoProduto.valor=produto.valor;
-        Carrinho.carrinho.push(pedidoProduto);
+        let existePedidoProduto = Carrinho.verifica(produto.id);
+        
+        if(existePedidoProduto > -1){
+            if(Number(Carrinho.carrinho[existePedidoProduto].quantidade) < Number(produto.qtd_estoque))
+                Carrinho.carrinho[existePedidoProduto].quantidade = Number(Carrinho.carrinho[existePedidoProduto].quantidade) + 1;
+        }else{
+            let pedidoProduto={} as PedidoProduto;
+            Carrinho.id++;
+            pedidoProduto.quantidade=1
+            pedidoProduto.id=Carrinho.id;
+            pedidoProduto.produto_id=produto.id;
+            pedidoProduto.valor=produto.valor;
+            Carrinho.carrinho.push(pedidoProduto);
+        }
      }
 
+    public static verifica(produtoId : Number) : number{
+        for (let i = 0; i < Carrinho.carrinho.length; i++) {
+            const item = Carrinho.carrinho[i];
+            if(item.produto_id.toString() === produtoId.toString()){
+                 return i
+            }
+        }
+        return -1
+    }
 
     public static excluirProduto(id:number):void{
         console.log(Carrinho.carrinho);

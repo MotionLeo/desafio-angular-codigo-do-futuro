@@ -1,6 +1,6 @@
 <div class="container-total">
   <h1>MEU CARRINHO</h1>
-  <select *ngIf="items.length>0" id="required" class="form-control form-control-chosen-required" [(ngModel)]="cliente"
+  <select *ngIf="items.length>0" id="required" [(ngModel)]="cliente"
     data-placeholder="CPF - Nome do cliente">
     <option *ngFor="let cliente of clientes;" id="{{cliente.id}}">
       <div id>{{cliente.id+" - "+cliente.nome}}</div>
