@@ -92,4 +92,5 @@ export class HomeComponent implements OnInit {
   number (a : Number){
     return Number(a)
   }
+
 }
