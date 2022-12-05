@@ -2,15 +2,15 @@
   <h1>MEU CARRINHO</h1>
   <select *ngIf="items.length>0" id="required" [(ngModel)]="cliente"
     data-placeholder="CPF - Nome do cliente">
-    <option *ngFor="let cliente of clientes;" id="{{cliente.id}}">
-      <div id>{{cliente.id+" - "+cliente.nome}}</div>
+    <option *ngFor="let cliente of clientes; index as i" id="{{cliente.id}}">
+      <div id>{{(i+1)+" - "+cliente.nome}}</div>
     </option>
   </select>
   
   <div class="resu" *ngIf="items.length>0"><h3>Resumo do pedido
   </h3>
   </div>
-  <table class="table table-hover">
+  <table class="table table-hover" *ngIf="items.length>0">
     
     <thead>
       <tr>
