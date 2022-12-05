@@ -115,10 +115,7 @@ export class HomeComponent implements OnInit, OnChanges {
     this.categoriaServico = new CategoriaServico(this.http);
     this.pedidoProdutoServico = new PedidoProdutoServico(this.http);
     this.produtoServico = new ProdutoServico(this.http);
-    this.listaDePedidos();
     this.listaDeCategorias();
-    this.listaDePedidosProdutos();
-    this.listaDeProdutos();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -132,6 +129,11 @@ export class HomeComponent implements OnInit, OnChanges {
       this.categorias.push(categoria);
     })
     this.categoriasMostradas=this.categorias;
+    await this.listaDePedidos();
+    await this.listaDeProdutos();
+    await this.listaDePedidosProdutos();
+    this.gerarGraficoBarra(0);
+    this.gerarGraficoArea(0);
   }
   private dataBr(data:Date):string{
     return data.getDate().toString()+"/"+(data.getMonth()+1).toString()+"/"+data.getFullYear().toString()
@@ -322,8 +324,6 @@ export class HomeComponent implements OnInit, OnChanges {
       this.produtos.push(produto);
     })
     this.produtosSelecionados=this.produtos;
-    this.gerarGraficoBarra(0);
-    this.gerarGraficoArea(0);
   }
 
   private async listaDePedidosProdutos(){
