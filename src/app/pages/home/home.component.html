@@ -2,9 +2,9 @@
     <div class="container">
         <div>
             <div class="modelo">
-                <input type="date" id="dataI" name="dataI" [(ngModel)]="dataInicial">
+                <input type="date" onkeydown="return false" id="dataI" name="dataI" [(ngModel)]="dataInicial" (change) = "atualizar()">
                 <label for="labelFiltro" style="display: block;">Data Inicio</label>
-                <input type="date" id="dataF" name="dataF" [(ngModel)]="dataFinal">
+                <input type="date" onkeydown="return false" id="dataF" name="dataF" [(ngModel)]="dataFinal" (change) = "atualizar()">
                 <label for="labelFiltro" style="display: block;">Data Final</label>
                 <label for="labelFiltro" style="display: block;">Produtos</label>
                 <select name="teste" id="required" class="form-control form-control-chosen-required" (change)="atualizar()" [(ngModel)] = "categoriaSelecionado" data-placeholder="CPF - Nome do cliente" >
@@ -28,7 +28,36 @@
         </div>
         <hr>
         <div>
-            Gráfico aqui
+            <google-chart
+            [title]="titleColum"
+            [type]="columChart"
+            [data]="dataColum"
+            [columns]="columnsNames"
+            [width]="widthColum"
+            [height]="heightColum"
+            [options]="optionsColum"
+            >
+            </google-chart>
+        </div>
+        <div>
+            <google-chart
+            [title]="titleArea"
+            [type]="areaChart"
+            [data]="dataArea"
+            [columns]="columnsNames"
+            [options]="optionsArea"
+            >
+            </google-chart>
+        </div>
+        <div>
+            <google-chart
+            [title]="titleHist"
+            [type]="histChart"
+            [data]="dataHist"
+            [columns]="columnsNamesHist"
+            [options]="optionsHist"
+            >
+            </google-chart>
         </div>
         <hr>
         <!--<div class="row ">
