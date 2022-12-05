@@ -24,7 +24,7 @@ import { CarrinhoNotificacaoComponent } from './pages/carrinho-notificacao/carri
 import { ListaPedidosCompletaComponent } from './pages/lista-pedidos-completa/lista-pedidos-completa.component';
 import { ListaPedidosComponent } from './pages/lista-pedidos/lista-pedidos.component';
 import { FormComprarProdutoComponent } from './pages/form-comprar-produto/form-comprar-produto.component';
-
+import { GoogleChartsModule } from 'angular-google-charts';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -49,6 +49,7 @@ registerLocaleData(ptBr);
     FormComprarProdutoComponent,
   ],
   imports: [
+    GoogleChartsModule,
     BrowserModule,
     MainRoutingModule,
     HttpClientModule,
