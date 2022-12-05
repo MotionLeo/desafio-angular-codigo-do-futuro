@@ -150,9 +150,6 @@ export class HomeComponent implements OnInit, OnChanges {
     dataColum1.push(`${this.dataBr(val1)}\n${this.dataBr(val2)}`)
     dataColum2.push(`${this.dataBr(val2)}\n${this.dataBr(val3)}`)
     dataColum3.push(`${this.dataBr(val3)}\n${this.dataBr(val4)}`)
-    let dataArea1:any[]=[`${this.dataBr(val3)}\n${this.dataBr(val4)}`]
-    let dataArea2:any[]=[`${this.dataBr(val2)}\n${this.dataBr(val3)}`]
-    let dataArea3:any[]=[`${this.dataBr(val1)}\n${this.dataBr(val2)}`]
     let dictPedidoTemp:Map<Number,Number>=new Map();
     this.pedidos.forEach(pedido=>{
       let datar =new Date(pedido.data.toString())
@@ -221,8 +218,10 @@ export class HomeComponent implements OnInit, OnChanges {
     }
     let dataColum=[dataColum1,dataColum2,dataColum3]
     this.dataColum=dataColum
+    console.log(dataColum)
     this.titleColum=titleColum
     this.columnsNames=columnsNames
+    console.log(columnsNames)
   }
   private getStringArea(dataIni:Date,dataFim:Date,atual:Date):string{
     var meses = ["Jan","Fev","Mar","Abr","Mai","Jun","Jul","Ago","Set","Out","Nov","Dez"];
