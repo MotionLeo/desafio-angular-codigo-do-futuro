@@ -1,4 +1,4 @@
-.container-total{
+.container-total {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
@@ -9,30 +9,31 @@
     margin-top: 10px;
 }
 
-select{
+select {
     margin-bottom: 10px;
 }
 
-.table{
+.table {
     width: 750px;
     align-self: end;
-    border-style:inset;
+    border-style: inset;
     text-align-last: center;
     background: #f8f8f8;
     margin-bottom: 70px;
 }
 
-tr{
+tr {
     border-style: dotted;
     border-width: 0;
 }
 
-.form-control{
-    visibility: hidden;}
+.form-control {
+    visibility: hidden;
+}
 
-.resu{
+.resu {
     align-self: end;
-    border-style:inset;
+    border-style: inset;
     text-align-last: center;
     width: 750px;
     background: #f8f8f8;
@@ -40,8 +41,7 @@ tr{
     border-top-right-radius: 0.5rem;
 }
 
-.para1{
+.para1 {
     padding-top: 15px;
     text-align: center;
 }
-

@@ -1,46 +1,71 @@
-.modelo{
+.modelo {
     display: inline-block;
     margin-right: 10px;
 }
-.naDireita{
+
+.naDireita {
     text-decoration: underline;
     cursor: pointer;
 }
-.naDireita:hover{
+
+.naDireita:hover {
     color: rgb(23, 23, 209);
     transition: 0.5s;
 }
+<<<<<<< Updated upstream
 .charts{
     display:flex;
+=======
+
+.charts {
+    display: flex;
+    text-align: -webkit-right
+>>>>>>> Stashed changes
 }
-.filtrosChart{
-    display:flex;
+
+.filtrosChart {
+    display: flex;
 }
+<<<<<<< Updated upstream
 .modelo1{
     display:flex;
+=======
+
+charts1 {
+    text-align: -webkit-right
+}
+
+.modelo1 {
+    display: flex;
+>>>>>>> Stashed changes
     width: 100%;
     align-items: center;
 }
-input{
+
+input {
     padding-left: 10px;
     border-radius: 15px;
     border-style: groove;
     border-width: 2px;
 }
-label{
+
+label {
     padding-left: 10px;
     padding-right: 5px;
 }
-.form-control{
+
+.form-control {
     width: 160px;
     border-radius: 15px;
     border-style: groove;
     border-width: 2px;
 }
-.modelo{
+
+.modelo {
     padding-right: 90px;
 }
-.container2{
+
+.container2 {
     border-style: groove;
     padding-top: 20px;
     border-radius: 35px;
@@ -51,6 +76,7 @@ label{
     margin-top: 0px;
     margin-bottom: 15px;
 }
-.page-section{
+
+.page-section {
     padding-bottom: 25px;
 }
