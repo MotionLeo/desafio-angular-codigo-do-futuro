@@ -6,7 +6,8 @@ Desafio proposto pela Gama Academy em parceria com a Farmacas e Febrafar.
 
 * André Mantovani 
 * Diego Moritz Lopes 
-* Gabriel Belo Soares 
+* Gabriel Belo Soares
+![alt text](https://ca.slack-edge.com/T046RUYBTSB-U047ZBBB43W-f45a9b2a7063-512)
 * Guilherme Henrique Sampaio Marcelino  
 * Leonardo Daniel Marcondes de Moraes 
 * Nicolly Santoantonio 
