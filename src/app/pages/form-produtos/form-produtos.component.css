@@ -13,17 +13,20 @@
 
 
 .form{
-    display: flex;
-    flex-direction: row;
+    
     flex-wrap: wrap;
     justify-content: space-between;
 
 }
 
 .form-group{
-    display: flex;
     margin: 10px;
     padding-top: 14px;
+}
+
+.lateral{
+    display: flex;
+    align-content: center;
 }
 
 .container{
