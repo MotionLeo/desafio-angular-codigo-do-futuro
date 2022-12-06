@@ -40,6 +40,7 @@
 /Site/.history/*
 
 # Miscellaneous
+.angular
 /Site/.angular/cache
 /Site/.sass-cache/
 /Site/connect.lock
