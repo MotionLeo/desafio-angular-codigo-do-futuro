@@ -6,7 +6,6 @@ import { firstValueFrom } from 'rxjs';
 
 export class PedidoServico{
 
-    private static pedido = PedidoServico
     constructor(private http:HttpClient) { }
 
     public async lista(): Promise<Pedido[] | undefined> {
@@ -16,7 +15,6 @@ export class PedidoServico{
 
     public async criar(pedido:Pedido): Promise<Pedido | undefined> {
         let pedidoRest:Pedido | undefined = await firstValueFrom(this.http.post<Pedido>(`${environment.api}/pedidos/`, pedido))
-        
         return pedidoRest;
     }
 
