@@ -1,20 +1,22 @@
-.modelo{
+.modelo {
     display: inline-block;
     margin-right: 10px;
 }
-.naDireita{
+
+.naDireita {
     text-decoration: underline;
     cursor: pointer;
     padding-top: 15px;
     padding-bottom: 10px;
     align-content: center;
 }
-.naDireita:hover{
+
+.naDireita:hover {
     color: rgb(23, 35, 209);
     transition: 0.5s;
 }
 
-.container2{
+.container2 {
     padding-top: 40px;
     margin-left: 20px;
     margin-right: 20px;
@@ -22,15 +24,15 @@
     font-size: 12px;
 }
 
-.row{
+.row {
     justify-content: center;
 }
 
-.table{
+.table {
     text-align: center;
 }
 
-.titulo{
+.titulo {
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 8px;

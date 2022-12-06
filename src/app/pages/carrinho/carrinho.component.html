@@ -1,17 +1,19 @@
 <div class="container-total">
   <h1>CARRINHO: </h1>
-  <span style="width: 270px; align-self: self-end;" *ngIf="items.length>0">Selecione o cliente: </span><select style="width: 270px; align-self: self-end; border-radius: 30px;" *ngIf="items.length>0" id="required" [(ngModel)]="cliente"
-    data-placeholder="CPF - Nome do cliente">
+  <span style="width: 270px; align-self: self-end;" *ngIf="items.length>0">Selecione o cliente: </span><select
+    style="width: 270px; align-self: self-end; border-radius: 30px;" *ngIf="items.length>0" id="required"
+    [(ngModel)]="cliente" data-placeholder="CPF - Nome do cliente">
     <option *ngFor="let cliente of clientes; index as i" id="{{cliente.id}}">
       <div id>{{(i+1)+" - "+cliente.nome}}</div>
     </option>
   </select>
-  
-  <div class="resu" *ngIf="items.length>0"><h3>Resumo do pedido
-  </h3>
+
+  <div class="resu" *ngIf="items.length>0">
+    <h3>Resumo do pedido
+    </h3>
   </div>
   <table class="table table-hover" *ngIf="items.length>0">
-    
+
     <thead>
       <tr>
         <th scope="col">Id</th>
