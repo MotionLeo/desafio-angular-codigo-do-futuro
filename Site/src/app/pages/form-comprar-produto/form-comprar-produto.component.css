@@ -1,13 +1,13 @@
-.page-section{
+.page-section {
     margin-top: 5px;
     margin-bottom: 5px;
 }
 
-.produt{
+.produt {
     width: 100%;
 }
 
-.form{
+.form {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
