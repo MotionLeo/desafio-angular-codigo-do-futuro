@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pedido } from 'src/app/models/pedido';
+import { ClienteServico } from 'src/app/servicos/clienteServico';
 import { PedidoServico } from 'src/app/servicos/pedidoServico';
 
 @Component({
@@ -17,17 +18,29 @@ export class ListaPedidosComponent implements OnInit {
   ) { }
 
   public pedidosServico: PedidoServico = {} as PedidoServico;
+  public clienteServico: ClienteServico = {} as ClienteServico;
   public pedidos: Pedido[] | undefined = [];
+  public nomeCliente: String[] = [];
 
   ngOnInit(): void {
     this.pedidosServico = new PedidoServico(this.http);
+    this.clienteServico = new ClienteServico(this.http);
     this.listaDePedidos();
   }
   
 
   private async listaDePedidos(){
     this.pedidos = await this.pedidosServico.lista();
+    this.pedidos?.forEach(async item =>{
+      let nome = await this.clienteServico.buscaPorId(item.cliente_id);
+      console.log(nome);
+      if(!nome){}else{
+        this.nomeCliente.push(nome.nome);
+      }
+    });
+
     this.pedidos = this.pedidos?.reverse();
+
   }
   number (a : Number){
     return Number(a)

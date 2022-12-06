@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Pedido } from 'src/app/models/pedido';
 import { Categoria } from 'src/app/models/categoria';
@@ -16,7 +16,7 @@ import { ChartType } from 'angular-google-charts';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, OnChanges {
+export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
@@ -45,12 +45,13 @@ export class HomeComponent implements OnInit, OnChanges {
   private produtos: Produto[] = []
 
   //Variáveis com dataBinding
-  public categoriaSelecionado: String = "";
-  public dataInicial: String = "01/01/2022";
-  public dataFinal: String = String(new Date(Date.now()));
-  public valorTotal: String = "";
-  public valorPositivo: String = "";
-  public valorNegativo: String = "";
+  public categoriaSelecionado:String="";
+  public dataInicial:String = "01/01/2022";
+  public dataFinal:String = String(new Date(Date.now()));
+  public dataMaxima:String = String(new Date(Date.now()));
+  public valorTotal:String="";
+  public valorPositivo:String="";
+  public valorNegativo:String="";
 
   //Gráficos
   titleColum = "asd";

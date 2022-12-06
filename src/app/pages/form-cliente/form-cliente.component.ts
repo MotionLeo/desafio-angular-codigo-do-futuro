@@ -66,18 +66,26 @@ export class FormClienteComponent implements OnInit {
     if(this.cliente && this.cliente.id > 0){
       this.cliente.cidade=this.estadoSelecionado.split("-")[1].trim()
       this.cliente.cidade=this.municipioSelecionado.split("-")[1].trim()
-      await this.clienteServico.update(this.cliente)
+      let cliente = this.verificaUndefined()
+        if(cliente){
+          await this.clienteServico.update(cliente);
+          this.router.navigateByUrl("/clientes");
+        }
     }
     else{
       if(!this.cliente){}
       else{
-        await this.clienteServico.criar(this.verificaUndefined());
+        let cliente = this.verificaUndefined()
+        if(cliente){
+          await this.clienteServico.criar(this.cliente);
+          this.router.navigateByUrl("/clientes");
+        }
       }
     }
-    this.router.navigateByUrl("/clientes");
   }
 
   verificaUndefined(){
+    let id:Number = 0;
     let nome:String = "";
     let telefone:String = "";
     let email:String = "";
@@ -92,20 +100,54 @@ export class FormClienteComponent implements OnInit {
 
     let complemento:String = "";
 
-    if(this.cliente?.nome) nome = this.cliente.nome;
-    if(this.cliente?.telefone) telefone = this.cliente.telefone;
-    if(this.cliente?.email) email = this.cliente.email;
-    if(this.cliente?.cpf) cpf = this.cliente.cpf;
-    if(this.cliente?.cep) cep = this.cliente.cep;
-    if(this.cliente?.logradouro) logradouro = this.cliente.logradouro;
-    if(this.cliente?.numero) numero = this.cliente.numero;
-    if(this.cliente?.bairro) bairro = this.cliente.bairro;
+    if(this.cliente?.id) id = this.cliente.id;
+
+    if(this.cliente?.nome && !(this.cliente.nome ==="")) nome = this.cliente.nome;
+    else{
+      alert("Por favor digite um nome válido");
+      return undefined
+    }
+    if(this.cliente?.telefone && !(this.cliente.telefone === "")) telefone = this.cliente.telefone;
+    else{
+      alert("Por favor digite um telefone válido");
+      return undefined
+    }
+    if(this.cliente?.email && !(this.cliente.email === "")) email = this.cliente.email;
+    else{
+      alert("Por favor digite um email válido");
+      return undefined
+    }
+    if(this.cliente?.cpf && !(this.cliente.cpf === "")) cpf = this.cliente.cpf;
+    else{
+      alert("Por favor digite um CPF válido");
+      return undefined
+    }
+    if(this.cliente?.cep && !(this.cliente.cep === "")) cep = this.cliente.cep;
+    else{
+      alert("Por favor digite um CEP válido");
+      return undefined
+    }
+    if(this.cliente?.logradouro && !(this.cliente.logradouro === "")) logradouro = this.cliente.logradouro;
+    else{
+      alert("Por favor digite um logradouro válido");
+      return undefined
+    }
+    if(this.cliente?.numero && !(this.cliente.numero === 0)) numero = this.cliente.numero;
+    else{
+      alert("Por favor digite um número válido");
+      return undefined
+    }
+    if(this.cliente?.bairro && !(this.cliente.bairro === "")) bairro = this.cliente.bairro;
+    else{
+      alert("Por favor digite um bairro válido");
+      return undefined
+    }
     if(tipoCidade) cidade = tipoCidade;
     if(this.cliente?.estado) estado = this.cliente.estado;
     if(this.cliente?.complemento) complemento = this.cliente.complemento;
 
     let cliente = {
-      id: 0,
+      id: id,
       nome: nome,
       telefone: telefone,
       email: email,

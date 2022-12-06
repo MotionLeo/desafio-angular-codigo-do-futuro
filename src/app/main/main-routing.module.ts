@@ -12,6 +12,7 @@ import { LoginGuard } from '../servicos/login.guard';
 import { ListaPedidosCompletaComponent } from '../pages/lista-pedidos-completa/lista-pedidos-completa.component';
 import { ListaPedidosComponent } from '../pages/lista-pedidos/lista-pedidos.component';
 import { FormComprarProdutoComponent } from '../pages/form-comprar-produto/form-comprar-produto.component';
+import { SairDoFormGuard } from '../servicos/sair-do-form.guard';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},

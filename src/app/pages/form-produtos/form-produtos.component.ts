@@ -62,26 +62,22 @@ export class FormProdutosComponent implements OnInit {
       return;
     }
     if(this.produto && this.produto.id > 0){
-      await this.produtoServico.update(this.verificaUndefined());
+      let produto = this.verificaUndefined()
+        if(produto){
+          await this.produtoServico.update(produto);
+          this.router.navigateByUrl("/produtos");
+        }
     }
     else{
-      // let nome:String = ""
-      // let valor:Number = 0
-      // if(this.produto?.nome) nome = this.produto.nome
-      // if(this.produto?.valor) valor = this.produto.valor
-      // let produto = {
-      //   id: 0,
-      //   nome: nome,
-      //   descricao: this.produto?.descricao,
-      //   valor: valor,
-      //   qtd_estoque: this.produto?.qtd_estoque,
-      // }
       if(!this.produto){}
       else{
-        await this.produtoServico.criar(this.verificaUndefined());
+        let produto = this.verificaUndefined()
+        if(produto){
+          await this.produtoServico.criar(produto);
+          this.router.navigateByUrl("/produtos");
+        }
       }
     }
-    this.router.navigateByUrl("/produtos");
   }
 
   verificaUndefined(){
@@ -97,13 +93,33 @@ export class FormProdutosComponent implements OnInit {
     let qtd_estoque:Number = 0;
     let custo:Number = 0;
 
-
     if(this.produto?.id) id = this.produto.id;
-    if(this.produto?.nome) nome = this.produto.nome;
-    if(this.produto?.descricao) descricao = this.produto.descricao;
-    if(this.produto?.valor) valor = this.produto.valor;
-    if(this.produto?.qtd_estoque) qtd_estoque = this.produto.qtd_estoque;
-    if(this.produto?.custo) custo = this.produto.custo;
+    
+    if(this.produto?.nome && !(this.produto.nome==="")) nome = this.produto.nome; 
+    else{       
+      alert("Por favor digite um nome válido");      
+      return undefined;     
+    }
+    if(this.produto?.descricao && !(this.produto.descricao==="")) descricao = this.produto.descricao;
+    else{       
+      alert("Por favor digite uma descrição válido");      
+      return undefined;     
+    }
+    if(this.produto?.valor && !(this.produto.valor===0)) valor = this.produto.valor;
+    else{       
+      alert("Por favor digite um valor válido");      
+      return undefined;     
+    }
+    if(this.produto?.qtd_estoque && !(this.produto.qtd_estoque === 0)) qtd_estoque = this.produto.qtd_estoque;
+    else{       
+      alert("Por favor digite uma quantidade válido");      
+      return undefined;     
+    }
+    if(this.produto?.custo && !(this.produto.custo===0)) custo = this.produto.custo;
+    else{       
+      alert("Por favor digite um custo válido");      
+      return undefined;     
+    }
 
     let produto = {
       id: id,
