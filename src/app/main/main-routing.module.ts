@@ -18,25 +18,25 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'pedidos', component:ListaPedidosComponent},
-  {path: 'lista-completa', component:ListaPedidosCompletaComponent},
-  {path: 'produtos', component: ProdutosComponent},
-  {path: 'produtos/:id', component: FormComprarProdutoComponent, children:[
+  {path: 'pedidos', component:ListaPedidosComponent, canActivate:[LoginGuard]},
+  {path: 'lista-completa', component:ListaPedidosCompletaComponent, canActivate:[LoginGuard]},
+  {path: 'produtos', component: ProdutosComponent, canActivate:[LoginGuard]},
+  {path: 'produtos/:id', component: FormComprarProdutoComponent, canActivate:[LoginGuard], children:[
     {path: '', redirectTo:'comprar', pathMatch: "full"},
-    {path: 'comprar', component: FormComprarProdutoComponent}
+    {path: 'comprar', component: FormComprarProdutoComponent, canDeactivate:[SairDoFormGuard]}
   ]},
-  {path: 'form-produto', component: FormProdutosComponent},
+  {path: 'form-produto', component: FormProdutosComponent, canDeactivate:[SairDoFormGuard]},
   {path: 'form-produto/:id', children: [
     {path: '', redirectTo: 'alterar', pathMatch: 'full'},
-    {path: 'alterar', component: FormProdutosComponent}
+    {path: 'alterar', component: FormProdutosComponent, canDeactivate:[SairDoFormGuard]}
   ] 
   },
   {path: 'carrinho',component: CarrinhoComponent, canActivate:[LoginGuard]},
   {path: 'clientes', component: ListaClienteComponent, canActivate:[LoginGuard]},
-  {path: 'form-clientes', component: FormClienteComponent, canActivate:[LoginGuard]},
+  {path: 'form-clientes', component: FormClienteComponent, canActivate:[LoginGuard], canDeactivate:[SairDoFormGuard]},
   {path: 'form-clientes/:id', canActivate:[LoginGuard], children: [
     {path: '', redirectTo: 'alterar', pathMatch: 'full'},
-    {path: 'alterar', component: FormClienteComponent}
+    {path: 'alterar', component: FormClienteComponent, canDeactivate:[SairDoFormGuard]}
   ] 
   },
   {path: '**', component: NotFoundComponent}
