@@ -40,11 +40,16 @@ label{
 .modelo{
     padding-right: 90px;
 }
-.container{
+.container2{
     border-style: groove;
     padding-top: 20px;
     border-radius: 35px;
     border-width: 1px;
+    font-size: 15px;
+    margin-left: 17px;
+    margin-right: 40px;
+    margin-top: 0px;
+    margin-bottom: 15px;
 }
 .page-section{
     padding-bottom: 25px;
