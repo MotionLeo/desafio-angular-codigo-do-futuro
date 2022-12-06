@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'produtos', component: ProdutosComponent, canActivate:[LoginGuard]},
   {path: 'produtos/:id', component: FormComprarProdutoComponent, canActivate:[LoginGuard], children:[
     {path: '', redirectTo:'comprar', pathMatch: "full"},
-    {path: 'comprar', component: FormComprarProdutoComponent, canDeactivate:[SairDoFormGuard]}
+    {path: 'comprar', component: FormComprarProdutoComponent}
   ]},
   {path: 'form-produto', component: FormProdutosComponent, canDeactivate:[SairDoFormGuard]},
   {path: 'form-produto/:id', children: [
