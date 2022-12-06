@@ -20,10 +20,10 @@ export class PedidoProdutoServico{
         let produto = await new ProdutoServico(this.http).buscaPorId(pedidoProduto.produto_id);
         let qtd=pedidoProduto.quantidade
         if(pedidoProduto.valor>0){
-            qtd =new Number(Number(qtd)*-1)
+            qtd =new Number(Number(qtd))
         }
         console.log(produto)
-        if(produto?.qtd_estoque) produto.qtd_estoque=new Number(Number(produto?.qtd_estoque)+Number(qtd))
+        if(produto?.qtd_estoque) produto.qtd_estoque=new Number(Number(produto?.qtd_estoque)-Number(qtd))
         
         if(produto) await new ProdutoServico(this.http).update(produto)
         return pedidoProdutoRest;

@@ -32,14 +32,11 @@
             [title]="titleColum"
             [type]="columChart"
             [data]="dataColum"
-            [columns]="columnsNames"
             [width]="widthColum"
             [height]="heightColum"
             [options]="optionsColum"
             >
             </google-chart>
-        </div>
-        <div>
             <google-chart
             [title]="titleArea"
             [type]="areaChart"
@@ -51,13 +48,14 @@
         </div>
         <div>
             <google-chart
-            [title]="titleHist"
-            [type]="histChart"
-            [data]="dataHist"
-            [columns]="columnsNamesHist"
-            [options]="optionsHist"
-            >
+            [title]="titlePie"
+            [type]="pieChart"
+            [data]="dataPie"
+            [columns]="columnNamesPie"  
+            [options]="optionsPie">
             </google-chart>
+        </div>
+        <div>
         </div>
         <hr>
         <!--<div class="row ">

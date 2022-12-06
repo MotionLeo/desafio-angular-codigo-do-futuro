@@ -68,7 +68,7 @@ export class FormComprarProdutoComponent implements OnInit {
       pedidoProduto.pedido_id = pedido_id;
       pedidoProduto.produto_id = produto_id;
       pedidoProduto.valor = -custo;
-      pedidoProduto.quantidade = qtd_estoque;
+      pedidoProduto.quantidade = -qtd_estoque;
       await this.pedidoProdutoServico.criar(pedidoProduto);
     }
     this.router.navigateByUrl("/produtos");
