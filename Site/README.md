@@ -1,8 +1,18 @@
-# DesafioAngularCodigoDoFuturo
+# Desafio Angular - Codigo do Futuro
 
 Desafio proposto pela Gama Academy em parceria com a Farmacas e Febrafar.
 
-## Tecnologia
+## Equipe:
+
+* André Mantovani 
+* Diego Moritz Lopes 
+* Gabriel Belo Soares 
+* Guilherme Henrique Sampaio Marcelino  
+* Leonardo Daniel Marcondes de Moraes 
+* Nicolly Santoantonio 
+* William Almeida Santos 
+
+## Tecnologia:
 
 Neste desafio utilizamos as seguintes tecnologias e frameworks:
 * Angular,
@@ -11,7 +21,7 @@ Neste desafio utilizamos as seguintes tecnologias e frameworks:
 * Typescript,
 * ExpressJs.
 
-#Sistema
+## Sistema:
 
 O sistema desenvolvido pelo time 6, tem as seguintes funcionalidades:
 * Área de login
