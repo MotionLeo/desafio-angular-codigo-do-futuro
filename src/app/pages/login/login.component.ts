@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     if(this.email === "admin@admin.com" && this.senha === "123456"){
       localStorage.setItem("logado", "true")
       this.logadoService.verificaLogado()
-      this.router.navigateByUrl("/clientes")
+      this.router.navigateByUrl("/home")
     }
     else{
       this.mensagem = "Usuário ou senha inválidos"

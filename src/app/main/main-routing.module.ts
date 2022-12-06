@@ -15,8 +15,8 @@ import { FormComprarProdutoComponent } from '../pages/form-comprar-produto/form-
 import { SairDoFormGuard } from '../servicos/sair-do-form.guard';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'home', component: HomeComponent},
+  {path: '', component: HomeComponent, canActivate:[LoginGuard]},
+  {path: 'home', component: HomeComponent, canActivate:[LoginGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'pedidos', component:ListaPedidosComponent, canActivate:[LoginGuard]},
   {path: 'lista-completa', component:ListaPedidosCompletaComponent, canActivate:[LoginGuard]},
