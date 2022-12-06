@@ -19,6 +19,7 @@ export class ClienteServico{
     }
 
     public async criar(cliente:Cliente): Promise<Cliente | undefined> {
+        console.log(cliente)
         let clienteRest:Cliente | undefined = await firstValueFrom(this.http.post<Cliente>(`${environment.api}/clientes/`, cliente))
         return clienteRest;
     }
