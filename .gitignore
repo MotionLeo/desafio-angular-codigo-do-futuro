@@ -1,41 +1,53 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+/Site/dist
+/Site/tmp
+/Site/out-tsc
+/Site/bazel-out
 
 # Node
 /node_modules
-npm-debug.log
-yarn-error.log
+/Site/node_modules
+/API/node_modules
+/Site/npm-debug.log
+/Site/yarn-error.log
+
+# Logs
+/API/logs
+/API/*.log
+/API/npm-debug.log*
+/API/yarn-debug.log*
+/API/yarn-error.log*
+/API/lerna-debug.log*
+/API/.pnpm-debug.log*
 
 # IDEs and editors
-.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+/Site/.idea/
+/Site/.project
+/Site/.classpath
+/Site/.c9/
+/Site/*.launch
+/Site/.settings/
+/Site/*.sublime-workspace
 
 # Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
+/Site/.vscode/*
+/Site/!.vscode/settings.json
+/Site/!.vscode/tasks.json
+/Site/!.vscode/launch.json
+/Site/!.vscode/extensions.json
+/Site/.history/*
 
 # Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
+.angular
+/Site/.angular/cache
+/Site/.sass-cache/
+/Site/connect.lock
+/Site/coverage
+/Site/libpeerconnection.log
+/Site/testem.log
+/Site/typings
 
 # System files
 .DS_Store
