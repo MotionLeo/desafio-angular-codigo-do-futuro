@@ -30,7 +30,6 @@ export class ListaPedidosCompletaComponent implements OnInit {
   
   public async nomeCliente(pedido: Pedido){
     let cliente = await this.clienteServico.buscaPorId(pedido.cliente_id);
-    debugger
     return cliente?.nome.toString()
   }
 

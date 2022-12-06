@@ -15,15 +15,15 @@
             </div>
             <div class="modelo">
                 <label for="labelTotal" style="display: block;">Total</label>
-                <label for="labelTotalView" style="display: block;">{{valorTotal}}</label>
+                <label for="labelTotalView" style="display: block;">{{number(valorTotal) | currency}}</label>
             </div>
             <div class="modelo">
                 <label for="labelSoma" style="display: block;">Entrada</label>
-                <label for="labelSomaView" style="display: block;">{{valorPositivo}}</label>
+                <label for="labelSomaView" style="display: block;">{{number(valorPositivo) | currency}}</label>
             </div>
             <div class="modelo">
                 <label for="labelSubtracao" style="display: block;">Saída</label>
-                <label for="labelSubtracaoView" style="display: block;">{{valorNegativo}}</label>
+                <label for="labelSubtracaoView" style="display: block;">{{number(valorNegativo) | currency}}</label>
             </div>
         </div>
         <hr>
