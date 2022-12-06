@@ -12,24 +12,15 @@
     color: rgb(23, 23, 209);
     transition: 0.5s;
 }
-<<<<<<< Updated upstream
-.charts{
-    display:flex;
-=======
 
 .charts {
     display: flex;
     text-align: -webkit-right
->>>>>>> Stashed changes
 }
 
 .filtrosChart {
     display: flex;
 }
-<<<<<<< Updated upstream
-.modelo1{
-    display:flex;
-=======
 
 charts1 {
     text-align: -webkit-right
@@ -37,7 +28,6 @@ charts1 {
 
 .modelo1 {
     display: flex;
->>>>>>> Stashed changes
     width: 100%;
     align-items: center;
 }
