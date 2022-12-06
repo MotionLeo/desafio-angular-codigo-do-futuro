@@ -18,6 +18,7 @@ Neste desafio utilizamos as seguintes tecnologias e frameworks:
 * Angular,
 * Google Charts,
 * Html, CSS e JS,
+* Bootstrap,
 * Typescript,
 * ExpressJs.
 
