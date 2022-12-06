@@ -35,6 +35,7 @@ export class ListaPedidosCompletaComponent implements OnInit {
     if(id) cli=this.dict.get(id)
     if(cli) return this.nomeClienteArray[cli]
     return "asd"
+
   }
 
   private async listaDePedidos(){

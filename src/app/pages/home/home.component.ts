@@ -49,9 +49,9 @@ export class HomeComponent implements OnInit {
   public dataInicial:String = "01/01/2022";
   public dataFinal:String = String(new Date(Date.now()));
   public dataMaxima:String = String(new Date(Date.now()));
-  public valorTotal:String="";
-  public valorPositivo:String="";
-  public valorNegativo:String="";
+  public valorTotal:Number=0;
+  public valorPositivo:Number=0;
+  public valorNegativo:Number=0;
 
   //Gráficos
   titleColum = "asd";
@@ -388,9 +388,9 @@ export class HomeComponent implements OnInit {
         positivo += total - val1
       }
     })
-    this.valorTotal = total.toString();
-    this.valorPositivo = positivo.toString();
-    this.valorNegativo = negativo.toString();
+    this.valorTotal = total;
+    this.valorPositivo = positivo;
+    this.valorNegativo = negativo;
   }
 
   async atualizar() {
