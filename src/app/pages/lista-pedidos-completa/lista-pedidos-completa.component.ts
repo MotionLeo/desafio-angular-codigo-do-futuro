@@ -21,6 +21,7 @@ export class ListaPedidosCompletaComponent implements OnInit {
   public pedidos: Pedido[] | undefined = [];
   public clienteServico: ClienteServico = {} as ClienteServico;
   public nomeClienteArray: String[] = [];
+  public dict: Map<Number,number> = new Map();
 
   ngOnInit(): void {
     this.pedidosServico = new PedidoServico(this.http);
@@ -28,13 +29,20 @@ export class ListaPedidosCompletaComponent implements OnInit {
     this.listaDePedidos();
   }
   
-  public async nomeCliente(pedido: Pedido){
-    let cliente = await this.clienteServico.buscaPorId(pedido.cliente_id);
-    debugger
-    return cliente?.nome.toString()
+  public nomeCliente(id: Number|undefined){
+    let cli:number|undefined=1
+    console.log(id)
+    if(id) cli=this.dict.get(id)
+    if(cli) return this.nomeClienteArray[cli]
+    return "asd"
   }
 
   private async listaDePedidos(){
+    let clientes = await this.clienteServico.lista();
+    clientes?.forEach(cliente=>{
+      this.nomeClienteArray.push(cliente.nome)
+      this.dict.set(cliente.id,this.nomeClienteArray.length-1)
+    })
     this.pedidos = await this.pedidosServico.lista();
   }
   number (a : Number){
