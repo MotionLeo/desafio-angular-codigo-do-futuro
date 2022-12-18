@@ -15,7 +15,7 @@ Desafio proposto pela Gama Academy em parceria com a Farmacas e Febrafar.
 ## Tecnologia:
 
 Neste desafio utilizamos as seguintes tecnologias e frameworks:
-* Angular,
+* Angular 14.2.10,
 * Google Charts,
 * Html, CSS e JS,
 * Bootstrap,
@@ -31,3 +31,16 @@ O sistema desenvolvido pelo time 6, tem as seguintes funcionalidades:
 * Área para cadastro de produtos e lista de todos os produtos cadastrados.
 * Página para acompanhamento dos pedidos (resumo e todos os pedidos).
 * Área do carrinho resumo com os itens adicionado no carrinho.
+
+## API Link
+<a>https://github.com/GuiHSM/API-desafio-angular-codigo-do-futuro</a>
+
+## Como Rodar
+Para rodar o aplicativo você precisa:
+* Clonar este repositório
+* Clonar o repositório da API
+* Instalar o npm em seu pc
+* Utilizar o comando npm install na pasta clonada da API
+* Utilizar o comando npm install no clone desta pasta
+* Utilizar o comando npm run dev na API
+* Utilizar o comando ng serve nesta pasta

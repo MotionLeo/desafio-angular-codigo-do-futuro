@@ -60,7 +60,7 @@
                             data-placeholder="CPF - Nome do cliente">
                             <option></option>
                             <option *ngFor="let estado of estados; index as i" id="{{estado.id}}"
-                                [selected]="estado.nome===acharEstado">{{(i+1)+"- "+estado.nome}}
+                                [selected]="(i+1)+'- '+estado.nome===estadoSelecionado">{{(i+1)+"- "+estado.nome}}
                             </option>
                         </select>
                     </div>
@@ -72,7 +72,7 @@
                             [(ngModel)]="municipioSelecionado" data-placeholder="CPF - Nome do cliente">
                             <option></option>
                             <option *ngFor="let municipio of municipios; index as i" id="{{municipio.id}}"
-                                [selected]="municipio.nome===acharMunicipio">
+                                [selected]="i+1==number(municipioSelecionado.split('-')[0])">
                                 {{(i+1)+"- "+municipio.nome}}</option>
                         </select>
                     </div>

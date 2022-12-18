@@ -27,10 +27,8 @@ export class FormClienteComponent implements OnInit {
   public IBGEServico: IBGEServico={} as IBGEServico;
   public estados:Estado[]=[];
   public municipios:Municipio[]|undefined=[];
-  public acharEstado:String=""
-  public acharMunicipio:String=""
-  public estadoSelecionado: String="";
-  public municipioSelecionado: String="";
+  public estadoSelecionado: String="1- Acre";
+  public municipioSelecionado: String="1- ";
   ngOnInit(): void {
     this.clienteServico = new ClienteServico(this.http);
     this.IBGEServico= new IBGEServico(this.http);
@@ -39,6 +37,8 @@ export class FormClienteComponent implements OnInit {
       this.editaCliente(id);
     }
     this.importarEstados();
+    console.log(this.estadoSelecionado)
+    console.log(this.municipioSelecionado)
   }
 
   private async importarEstados(){
@@ -48,45 +48,36 @@ export class FormClienteComponent implements OnInit {
     }
     this.importarCidades();
   }
+
   public async importarCidades(){
-    let aux=Number(this.estadoSelecionado.split("-")[0])
-    if(this.estadoSelecionado===""){
-      aux=1
-      let cont=0
-      this.estados.forEach(estado=>{
-        cont++
-        if(estado.nome==this.acharEstado){
-          aux=cont
-        }
-      })
-    }
-    this.municipios= await this.IBGEServico.listaMunicipiosPorEstado(Number(this.estados.at(aux-1)?.id));
+    this.municipios= await this.IBGEServico.listaMunicipiosPorEstado(Number(this.estados.at(Number(this.estadoSelecionado.split("-")[0])-1)?.id));
    
+    this.municipioSelecionado="1- ";
+    console.log(this.estadoSelecionado)
+    console.log(this.municipioSelecionado)
   }
 
   private async editaCliente(id:Number){
     this.tituloDoBotao = "Alterar";
     this.cliente = await this.clienteServico.buscaPorId(id);
-    let cidade=this.cliente?.cidade
-    let estado=this.cliente?.estado
-    if(cidade) this.acharMunicipio=cidade
-    if(estado) this.acharEstado=estado
   }
 
    async registrar(){
     if(this.cliente && this.cliente.id > 0){
+      this.cliente.cidade=this.estadoSelecionado.split("-")[1].trim()
+      this.cliente.cidade=this.municipioSelecionado.split("-")[1].trim()
       let cliente = this.verificaUndefined()
-      if(cliente){
-        await this.clienteServico.update(cliente);
-        this.router.navigateByUrl("/clientes");
-      }
+        if(cliente){
+          await this.clienteServico.update(cliente);
+          this.router.navigateByUrl("/clientes");
+        }
     }
     else{
       if(!this.cliente){}
       else{
         let cliente = this.verificaUndefined()
         if(cliente){
-          await this.clienteServico.criar(cliente);
+          await this.clienteServico.criar(this.cliente);
           this.router.navigateByUrl("/clientes");
         }
       }
@@ -151,18 +142,10 @@ export class FormClienteComponent implements OnInit {
       alert("Por favor digite um bairro válido");
       return undefined
     }
-    if(tipoCidade) cidade = tipoCidade.toString();
+    if(tipoCidade) cidade = tipoCidade;
+    if(this.cliente?.estado) estado = this.cliente.estado;
     if(this.cliente?.complemento) complemento = this.cliente.complemento;
-    let existe=false
-    this.municipios?.forEach(municipio=>{
-      if(municipio.nome==cidade){
-        existe=true
-      }
-    })
-    if(!existe){
-      alert("Selecione uma Cidade");
-      return ;
-    }
+
     let cliente = {
       id: id,
       nome: nome,
@@ -177,7 +160,7 @@ export class FormClienteComponent implements OnInit {
       estado: estado,
       complemento: complemento,
     }
-    console.log("cliente=",cliente)
+
     return cliente
     }
   number(val:String){
