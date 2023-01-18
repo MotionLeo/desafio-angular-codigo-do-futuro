@@ -31,6 +31,7 @@ export class FormComprarProdutoComponent implements OnInit {
   ) { }
 
   private produtoServico:ProdutoServico = {} as ProdutoServico;
+  private clienteServico:ClienteServico = {} as ClienteServico;
   public produto:Produto | undefined = {} as Produto;
   public pedidoProdutoServico: PedidoProdutoServico = {} as PedidoProdutoServico; 
   public pedidoServico: PedidoServico = {} as PedidoServico; 
@@ -39,6 +40,7 @@ export class FormComprarProdutoComponent implements OnInit {
     this.produtoServico = new ProdutoServico(this.http);
     this.pedidoServico = new PedidoServico(this.http);
     this.pedidoProdutoServico = new PedidoProdutoServico(this.http);
+    this.clienteServico = new ClienteServico(this.http);
     let id:Number = this.routerParams.snapshot.params['id'];
     if(id){
       this.carregaProduto(id);
@@ -52,7 +54,7 @@ export class FormComprarProdutoComponent implements OnInit {
     let custo:Number = 0;
     let pedido = {} as Pedido;
     
-    pedido.cliente_id =0;
+    pedido.cliente_id = 3;
     
     if(this.produto?.id) produto_id = this.produto.id;
     if(this.qtd) qtd_estoque = this.qtd;
@@ -60,14 +62,14 @@ export class FormComprarProdutoComponent implements OnInit {
 
     
     pedido.valor_total =  - Number(qtd_estoque) * Number(custo);
-    console.log("Caiu aq")
+    console.log("Caiu aq");
     await this.pedidoServico.criar(pedido);
-    console.log("agr aq")
+    console.log("agr aq");
     let pedido_id = (await this.pedidoServico.getLast())?.id;
+    console.log("e aq??????")
 
     if(pedido_id){
       let pedidoProduto = {} as PedidoProduto;
-      pedidoProduto.id = new Number (pedido_id+ "01");
       pedidoProduto.pedido_id = pedido_id;
       pedidoProduto.produto_id = produto_id;
       pedidoProduto.valor = -custo;

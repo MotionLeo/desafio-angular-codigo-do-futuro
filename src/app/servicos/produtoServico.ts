@@ -28,7 +28,7 @@ export class ProdutoServico{
     }
 
     public async getLast(): Promise<Produto | undefined> {
-        let produto:Produto[] | undefined = await firstValueFrom(this.http.get<Produto[]>(`${environment.api}produtos/produtosLast`))
+        let produto:Produto[] | undefined = await firstValueFrom(this.http.get<Produto[]>(`${environment.api}/produtosLast`))
         return produto.at(0);
     }
 

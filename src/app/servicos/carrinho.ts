@@ -4,6 +4,7 @@ import { PedidoProduto } from "../models/pedidoProduto";
 import { HttpClient } from "@angular/common/http";
 import { Pedido } from "../models/pedido";
 import { Produto } from "../models/produto";
+import { ProdutoServico } from "./produtoServico";
 
 export class Carrinho{
 
@@ -11,6 +12,7 @@ export class Carrinho{
     {"id":202,"pedido_id":2,"produto_id":2,"valor":10,"quantidade":2}];
     private static id:number=0;
     private static pedido: Pedido={"id":2,"cliente_id":3,"valor_total":40,"data":new Date((new Date()).getTime()),"cliente":{nome:"jorge"}};
+
     
     public static buscaTamanho():number{
         return Carrinho.carrinho.length;

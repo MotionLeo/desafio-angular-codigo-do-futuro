@@ -28,7 +28,7 @@ export class PedidoServico{
     }
 
     public async getLast(): Promise<Pedido | undefined> {
-        let pedido:Pedido | undefined = await firstValueFrom(this.http.get<Pedido>(`${environment.api}pedidos/pedidosLast`))
+        let pedido:Pedido | undefined = await firstValueFrom(this.http.get<Pedido>(`${environment.api}/pedidosLast`))
         return pedido;
     }
 
