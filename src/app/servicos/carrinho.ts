@@ -10,7 +10,7 @@ export class Carrinho{
     private static carrinho: (PedidoProduto)[]=[{"id":201,"pedido_id":2,"produto_id":1,"valor":10,"quantidade":2},
     {"id":202,"pedido_id":2,"produto_id":2,"valor":10,"quantidade":2}];
     private static id:number=0;
-    private static pedido: Pedido={"id":2,"cliente_id":3,"valor_total":40,"data":new Date((new Date()).getTime())};
+    private static pedido: Pedido={"id":2,"cliente_id":3,"valor_total":40,"data":new Date((new Date()).getTime()),"cliente":{nome:"jorge"}};
     
     public static buscaTamanho():number{
         return Carrinho.carrinho.length;

@@ -7,14 +7,18 @@ import { firstValueFrom } from 'rxjs';
 export class ProdutoServico{
 
     constructor(private http:HttpClient) { }
-
+    
     public async lista(): Promise<Produto[] | undefined> {
         let produtos:Produto[] | undefined = await firstValueFrom(this.http.get<Produto[]>(`${environment.api}/produtos`))
         return produtos;
     }
 
+    public async buscaPorId(id:Number): Promise<Produto | undefined> {
+        return await firstValueFrom(this.http.get<Produto | undefined>(`${environment.api}/produtos/${id}`))
+    }
+
     public async criar(produto:Produto): Promise<Produto | undefined> {
-        let produtoRest:Produto | undefined = await firstValueFrom(this.http.post<Produto>(`${environment.api}/produtos/`, produto))
+        let produtoRest:Produto | undefined = await firstValueFrom(this.http.post<Produto>(`${environment.api}/produtos`,produto))
         return produtoRest;
     }
 
@@ -24,12 +28,8 @@ export class ProdutoServico{
     }
 
     public async getLast(): Promise<Produto | undefined> {
-        let produto:Produto[] | undefined = await firstValueFrom(this.http.get<Produto[]>(`${environment.api}/produtosLast`))
+        let produto:Produto[] | undefined = await firstValueFrom(this.http.get<Produto[]>(`${environment.api}produtos/produtosLast`))
         return produto.at(0);
-    }
-
-    public async buscaPorId(id:Number): Promise<Produto | undefined> {
-        return await firstValueFrom(this.http.get<Produto | undefined>(`${environment.api}/produtos/${id}`))
     }
 
     public excluirPorId(id:Number) {

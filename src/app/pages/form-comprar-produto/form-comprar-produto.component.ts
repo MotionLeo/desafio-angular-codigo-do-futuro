@@ -6,6 +6,7 @@ import { Pedido } from 'src/app/models/pedido';
 import { PedidoProduto } from 'src/app/models/pedidoProduto';
 import { Produto } from 'src/app/models/produto';
 import { CategoriaServico } from 'src/app/servicos/categoriaServico';
+import { ClienteServico } from 'src/app/servicos/clienteServico';
 import { PedidoProdutoServico } from 'src/app/servicos/pedidoProdutoServico';
 import { PedidoServico } from 'src/app/servicos/pedidoServico';
 import { ProdutoServico } from 'src/app/servicos/produtoServico';
@@ -51,7 +52,7 @@ export class FormComprarProdutoComponent implements OnInit {
     let custo:Number = 0;
     let pedido = {} as Pedido;
     
-    pedido.cliente_id = 0;
+    pedido.cliente_id =0;
     
     if(this.produto?.id) produto_id = this.produto.id;
     if(this.qtd) qtd_estoque = this.qtd;
@@ -59,7 +60,9 @@ export class FormComprarProdutoComponent implements OnInit {
 
     
     pedido.valor_total =  - Number(qtd_estoque) * Number(custo);
+    console.log("Caiu aq")
     await this.pedidoServico.criar(pedido);
+    console.log("agr aq")
     let pedido_id = (await this.pedidoServico.getLast())?.id;
 
     if(pedido_id){
@@ -75,7 +78,7 @@ export class FormComprarProdutoComponent implements OnInit {
   }
 
   async verificaUndefined(){
-    let produto_id: Number = 0
+    let produto_id: Number = 0;
     let qtd_estoque:Number = 0;
     let custo:Number = 0;
     let pedido = {} as Pedido;
