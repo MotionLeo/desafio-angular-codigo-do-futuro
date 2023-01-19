@@ -1,4 +1,4 @@
-<nav id="Navbar-primary" class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav *ngIf="loginService.verificaUsuarioLogado()" id="Navbar-primary" class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
     <a class="navbar-brand ps-3" routerLink="/">RADAR</a>
 
@@ -50,8 +50,8 @@
             <!--logof-->
 
             <ul>
-                <li *ngIf="logadoService.logado" class="deslogue">
-                    <button type="button" class="btn btn-secondary" (click)="logadoService.deslogar()">
+                <li class="deslogue">
+                    <button type="button" class="btn btn-secondary" (click)="loginService.deslogar()">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-escape" viewBox="0 0 16 16">
                             <path

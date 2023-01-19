@@ -25,6 +25,7 @@ import { ListaPedidosCompletaComponent } from './pages/lista-pedidos-completa/li
 import { ListaPedidosComponent } from './pages/lista-pedidos/lista-pedidos.component';
 import { FormComprarProdutoComponent } from './pages/form-comprar-produto/form-comprar-produto.component';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { httpInterceptorProviders } from './servicos/Interceptor';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -62,6 +63,7 @@ registerLocaleData(ptBr);
       useValue: 'BRL',
     },
      LoginGuard,
+     httpInterceptorProviders
   ],
   bootstrap: [AppComponent]
 

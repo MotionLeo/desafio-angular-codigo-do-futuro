@@ -30,17 +30,7 @@ export class ListaPedidosComponent implements OnInit {
   
 
   private async listaDePedidos(){
-    this.pedidos = await this.pedidosServico.lista();
-    this.pedidos?.forEach(async item =>{
-      let nome = await this.clienteServico.buscaPorId(item.cliente_id);
-      console.log(nome);
-      if(!nome){}else{
-        this.nomeCliente.push(nome.nome);
-      }
-    });
-
-    this.pedidos = this.pedidos?.reverse();
-
+    this.pedidos = await this.pedidosServico.listaContrario();
   }
   number (a : Number){
     return Number(a)

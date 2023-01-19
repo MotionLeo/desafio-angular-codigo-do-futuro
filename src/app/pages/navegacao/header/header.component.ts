@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LogadoService } from 'src/app/servicos/logado.service';
+import { LoginService } from 'src/app/servicos/login.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,7 @@ import { LogadoService } from 'src/app/servicos/logado.service';
 export class HeaderComponent implements OnInit {
 
   constructor(
-    public logadoService:LogadoService
+   public loginService: LoginService
   ) { }
 
   ngOnInit(): void {
