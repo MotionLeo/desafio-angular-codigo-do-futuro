@@ -30,7 +30,7 @@ export class ListaPedidosComponent implements OnInit {
   
 
   private async listaDePedidos(){
-    this.pedidos = await this.pedidosServico.lista();
+    this.pedidos = await this.pedidosServico.listaContrario();
   }
   number (a : Number){
     return Number(a)
