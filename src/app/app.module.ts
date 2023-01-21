@@ -30,6 +30,7 @@ import { DetalhesLojaComponent } from './pages/detalhes-loja/detalhes-loja.compo
 import { GoogleMapsModule } from '@angular/google-maps';
 import { GoogleMapsComponent } from './pages/google-maps/google-maps.component';
 import { FormLojaComponent } from './pages/form-loja/form-loja.component';
+import { ListaLojasComponent } from './pages/lista-lojas/lista-lojas.component';
 registerLocaleData(ptBr);
 
 @NgModule({
@@ -55,6 +56,7 @@ registerLocaleData(ptBr);
     DetalhesLojaComponent,
     GoogleMapsComponent,
     FormLojaComponent,
+    ListaLojasComponent,
   ],
   imports: [
     GoogleChartsModule,

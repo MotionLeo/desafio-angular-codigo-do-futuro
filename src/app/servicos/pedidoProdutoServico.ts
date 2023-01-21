@@ -15,7 +15,6 @@ export class PedidoProdutoServico{
     }
 
     public async criar(pedidoProduto:PedidoProduto): Promise<PedidoProduto | undefined> {
-        console.log("o")
         let pedidoProdutoRest:PedidoProduto | undefined = await firstValueFrom(this.http.post<PedidoProduto>(`${environment.api}/pedidosProdutos`, pedidoProduto))
         let produto = await new ProdutoServico(this.http).buscaPorId(pedidoProduto.produto_id);
         let qtd=pedidoProduto.quantidade

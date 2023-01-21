@@ -69,6 +69,7 @@ export class FormLojaComponent implements OnInit {
         if(loja){
           await this.lojaService.update(loja);
           this.router.navigateByUrl("/home");
+          console.log(loja)
         }
     }
     else{
@@ -76,12 +77,18 @@ export class FormLojaComponent implements OnInit {
       else{
         let loja = this.loja
         if(loja){
+          this.loja.estado=this.estadoSelecionado.split("-")[1].trim()
+          this.loja.cidade=this.municipioSelecionado.split("-")[1].trim()
+          console.log(loja)
           await this.lojaService.criar(this.loja);
           this.router.navigateByUrl("/home");
         }
       }
     }
   }
+
+
+  
 
   number(val:String){
     return Number(val);

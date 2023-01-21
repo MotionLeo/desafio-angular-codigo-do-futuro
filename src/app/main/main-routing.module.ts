@@ -16,6 +16,7 @@ import { SairDoFormGuard } from '../servicos/sair-do-form.guard';
 import { DetalhesLojaComponent } from '../pages/detalhes-loja/detalhes-loja.component';
 import { GoogleMapsComponent } from '../pages/google-maps/google-maps.component';
 import { FormLojaComponent } from '../pages/form-loja/form-loja.component';
+import { ListaLojasComponent } from '../pages/lista-lojas/lista-lojas.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate:[LoginGuard]},
@@ -36,8 +37,9 @@ const routes: Routes = [
     {path: 'alterar', component: FormProdutosComponent, canDeactivate:[SairDoFormGuard]}
   ] 
   },
-  {path: 'detalhes-loja', component: DetalhesLojaComponent},
-  {path: 'teste', component: GoogleMapsComponent},
+  {path: 'lojas', component: ListaLojasComponent},
+  {path: 'detalhes-loja', component: DetalhesLojaComponent, canActivate:[LoginGuard]},
+  {path: 'teste', component: GoogleMapsComponent, canActivate:[LoginGuard]},
   {path: 'carrinho',component: CarrinhoComponent, canActivate:[LoginGuard]},
   {path: 'clientes', component: ListaClienteComponent, canActivate:[LoginGuard]},
   {path: 'form-clientes', component: FormClienteComponent, canActivate:[LoginGuard], canDeactivate:[SairDoFormGuard]},
