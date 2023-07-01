@@ -13,8 +13,13 @@ export class PedidoServico{
         return pedidos;
     }
 
+    public async listaContrario(): Promise<Pedido[] | undefined> {
+        let pedidos:Pedido[] | undefined = await firstValueFrom(this.http.get<Pedido[]>(`${environment.api}/pedidosLastList`))
+        return pedidos;
+    }
+
     public async criar(pedido:Pedido): Promise<Pedido | undefined> {
-        let pedidoRest:Pedido | undefined = await firstValueFrom(this.http.post<Pedido>(`${environment.api}/pedidos/`, pedido))
+        let pedidoRest:Pedido | undefined = await firstValueFrom(this.http.post<Pedido>(`${environment.api}/pedidos`, pedido))
         return pedidoRest;
     }
 

@@ -13,6 +13,10 @@ import { ListaPedidosCompletaComponent } from '../pages/lista-pedidos-completa/l
 import { ListaPedidosComponent } from '../pages/lista-pedidos/lista-pedidos.component';
 import { FormComprarProdutoComponent } from '../pages/form-comprar-produto/form-comprar-produto.component';
 import { SairDoFormGuard } from '../servicos/sair-do-form.guard';
+import { DetalhesLojaComponent } from '../pages/detalhes-loja/detalhes-loja.component';
+import { GoogleMapsComponent } from '../pages/google-maps/google-maps.component';
+import { FormLojaComponent } from '../pages/form-loja/form-loja.component';
+import { ListaLojasComponent } from '../pages/lista-lojas/lista-lojas.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent, canActivate:[LoginGuard]},
@@ -25,12 +29,17 @@ const routes: Routes = [
     {path: '', redirectTo:'comprar', pathMatch: "full"},
     {path: 'comprar', component: FormComprarProdutoComponent}
   ]},
+
+  {path: 'form-loja', component: FormLojaComponent, canDeactivate:[SairDoFormGuard]},
   {path: 'form-produto', component: FormProdutosComponent, canDeactivate:[SairDoFormGuard]},
   {path: 'form-produto/:id', children: [
     {path: '', redirectTo: 'alterar', pathMatch: 'full'},
     {path: 'alterar', component: FormProdutosComponent, canDeactivate:[SairDoFormGuard]}
   ] 
   },
+  {path: 'lojas', component: ListaLojasComponent},
+  {path: 'detalhes-loja', component: DetalhesLojaComponent, canActivate:[LoginGuard]},
+  {path: 'teste', component: GoogleMapsComponent, canActivate:[LoginGuard]},
   {path: 'carrinho',component: CarrinhoComponent, canActivate:[LoginGuard]},
   {path: 'clientes', component: ListaClienteComponent, canActivate:[LoginGuard]},
   {path: 'form-clientes', component: FormClienteComponent, canActivate:[LoginGuard], canDeactivate:[SairDoFormGuard]},

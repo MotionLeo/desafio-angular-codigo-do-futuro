@@ -20,7 +20,7 @@
                     <tbody>
                         <tr *ngFor="let pedido of pedidos.slice(0, 5); let i = index">
                             <th scope="row">{{pedido.id}}</th>
-                            <td>{{nomeCliente.at(i)}}</td>
+                            <td>{{pedido.cliente.nome}}</td>
                             <td>{{number(pedido.valor_total) | currency}}</td>
                             <td>{{pedido.data | date: 'dd/MM/yyyy HH:mm'}}</td>
                         </tr>

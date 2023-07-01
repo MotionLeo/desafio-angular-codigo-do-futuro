@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  api: "http://localhost:3000",
+  api: "https://backend-s4ddklkevq-rj.a.run.app",
   ibge:"https://servicodados.ibge.gov.br/api/v1/localidades"
 };

@@ -1,0 +1,80 @@
+.page-section {
+    margin-top: 15px;
+    margin-bottom: 2px;
+}
+
+.container {
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 12px;
+}
+
+.div3 {
+    padding-left: 1px;
+    padding-right: 0px;
+    width: 100%;
+}
+
+.row {
+    padding-top: 15px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 970px;
+}
+
+.button01 {
+    display: flex;
+    flex-direction: column;
+    border-color: inherit;
+    border-style: solid;
+    border-width: 0;
+    justify-content: center;
+
+}
+
+tbody {
+    vertical-align: middle;
+}
+
+thead {
+    display: table;
+    width: 100%;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+    border-collapse: collapse;
+}
+
+.tds {
+    width: 41px;
+    height: 159px;
+    vertical-align: middle;
+    padding-top: 12px;
+    display: flex;
+    align-items: center;
+}
+
+tr {
+    vertical-align: middle;
+}
+
+.acoes {
+    padding-left: 50px;
+    padding-right: 1px;
+}
+
+.span1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 8px;
+    display: flex;
+}
